@@ -1,0 +1,84 @@
+spring:
+  profiles:
+    active: test
+
+mybatis:
+  # 配置xml 的扫描路径
+  mapper-locations: classpath:mapper/*.xml
+  check-config-location: true
+  type-aliases-package: org.example.demo.entity
+
+
+pagehelper:
+  autoDialect: true
+  closeConn: false
+  reasonable: true
+
+
+#配置log等级
+logging:
+  level:
+    com.example.demo.mapper: debug
+
+---
+#数据库设置
+spring:
+  profiles: dev
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/student?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: 14141215
+
+
+    #下面为连接池补充设置
+    initialSize: 5
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    useGlobalDataSourceStat: true
+
+
+---
+#数据库设置
+spring:
+  profiles: test
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/student?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: 123456
+
+
+    #下面为连接池补充设置
+    initialSize: 5
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    useGlobalDataSourceStat: true
