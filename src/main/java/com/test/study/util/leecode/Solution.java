@@ -2,8 +2,41 @@ package com.test.study.util.leecode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 class Solution {
+
+	//1431. Kids With the Greatest Number of Candies
+	public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+
+		List<Boolean> list = new ArrayList<>();
+		int max = 0;
+		for (int i : candies) {
+			if (i >= max) {
+				max = i;
+			}
+		}
+
+		for (int i : candies) {
+			if (i + extraCandies >= max) {
+				list.add(true);
+			} else {
+				list.add(false);
+			}
+		}
+
+		return list;
+	}
+
+
+/* 	public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int max = Arrays.stream(candies).max().getAsInt();
+        return Arrays
+					.stream(candies)
+					.mapToObj(a -> (a+extraCandies >= max))
+					.collect(Collectors.toList());
+    } */
+
 
 	// 1409. Queries on a Permutation With Key
 	public int[] processQueries(int[] queries, int m) {
