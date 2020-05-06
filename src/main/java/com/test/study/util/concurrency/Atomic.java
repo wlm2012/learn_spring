@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.LongAdder;
 /**
  * @author wlm
  */
+
+@SuppressWarnings(value={"all"})
 public class Atomic {
 
     public static AtomicLong atomicLong=new AtomicLong();

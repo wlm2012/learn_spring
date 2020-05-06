@@ -13,6 +13,8 @@ import java.util.Arrays;
  *
  * @author wlm
  */
+
+@SuppressWarnings(value={"all"})
 public class ReflectTest {
 
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException, NoSuchFieldException {
@@ -49,6 +51,7 @@ public class ReflectTest {
 
 	}
 
+	
 	public static void testMethod() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 		Class c1 = Class.forName("wlm.entity.Person");
 		Object person = c1.getConstructor().newInstance();

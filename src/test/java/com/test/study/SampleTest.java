@@ -2,7 +2,6 @@ package com.test.study;
 
 import java.util.List;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.github.pagehelper.PageHelper;
 import com.test.study.entity.User;
 import com.test.study.mapper.UserMapper;
