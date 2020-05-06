@@ -15,23 +15,19 @@ public class EnumTest {
 		System.out.println("string=" + Size.small.toString());
 		System.out.println("size=" + size);
 		System.out.println("ab=" + size.getAd());
-        System.out.println("s="+size.getS());
+		System.out.println("s=" + size.getS());
 		in.close();
 	}
-/*  input:   small
-    output:
-    string=small
-    size=small
-    ab=s
-    s=1
-    
-    */
-
+	/*
+	 * input: small
+	 * output: string=small size=small ab=s s=1
+	 * 
+	 */
 
 }
 
 enum Size {
-	//ad  大小  s 数量
+	// ad 大小 s 数量
 	small("s", "1"), medium("m", "2"), large("l", "3");
 
 	private Size(String ad, String s) {

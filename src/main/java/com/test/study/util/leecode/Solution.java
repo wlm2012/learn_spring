@@ -3,10 +3,9 @@ package com.test.study.util.leecode;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 class Solution {
 
-	//1409. Queries on a Permutation With Key
+	// 1409. Queries on a Permutation With Key
 	public int[] processQueries(int[] queries, int m) {
 		int[] result = new int[queries.length];
 		ArrayList<Integer> list = new ArrayList<>();
@@ -22,28 +21,26 @@ class Solution {
 
 		return result;
 	}
-    
 
-	//1266. Minimum Time Visiting All Points
+	// 1266. Minimum Time Visiting All Points
 	public int minTimeToVisitAllPoints(int[][] points) {
-		int[] before=points[0];
-		int result=0;
+		int[] before = points[0];
+		int result = 0;
 		for (int i = 1; i < points.length; i++) {
-			int max=0;
-			if (Math.abs(points[i][0]-before[0])>Math.abs(points[i][1]-before[1])){
-				max=Math.abs(points[i][0]-before[0]);
-			}else{
-				max=Math.abs(points[i][1]-before[1]);
+			int max = 0;
+			if (Math.abs(points[i][0] - before[0]) > Math.abs(points[i][1] - before[1])) {
+				max = Math.abs(points[i][0] - before[0]);
+			} else {
+				max = Math.abs(points[i][1] - before[1]);
 			}
-			result+=max;
-			before=points[i];
+			result += max;
+			before = points[i];
 		}
 
 		return result;
-    }
+	}
 
-
-	//1389. Create Target Array in the Given Order
+	// 1389. Create Target Array in the Given Order
 	public int[] createTargetArray(int[] nums, int[] index) {
 		ArrayList<Integer> list = new ArrayList<>();
 
@@ -62,20 +59,19 @@ class Solution {
 
 	public static void main(String[] args) {
 		Solution solution = new Solution();
-		int[] ints = {1, 2, 3, 4};
+		int[] ints = { 1, 2, 3, 4 };
 		System.out.println(Arrays.toString(solution.decompressRLElist(ints)));
 	}
 
-
-	//1365. How Many Numbers Are Smaller Than the Current Number
+	// 1365. How Many Numbers Are Smaller Than the Current Number
 	public int[] smallerNumbersThanCurrent(int[] nums) {
-		int[] result=new int[nums.length];
-        for (int i =0;i<nums.length;i++) {
-			result[i]=returnNum(nums[i], nums);
+		int[] result = new int[nums.length];
+		for (int i = 0; i < nums.length; i++) {
+			result[i] = returnNum(nums[i], nums);
 		}
 		return result;
 	}
-	
+
 	public int returnNum(int num, int[] nums) {
 		int count = 0;
 		for (int i : nums) {
@@ -87,9 +83,7 @@ class Solution {
 
 	}
 
-
-
-	//1323. Maximum 69 Number
+	// 1323. Maximum 69 Number
 	public int maximum69Number(int num) {
 		char[] chars = Integer.toString(num).toCharArray();
 		for (int i = 0; i < chars.length; i++) {
@@ -102,7 +96,7 @@ class Solution {
 		return Integer.parseInt(new String(chars));
 	}
 
-	//1281. Subtract the Product and Sum of Digits of an Integer
+	// 1281. Subtract the Product and Sum of Digits of an Integer
 	public int subtractProductAndSum(int n) {
 		int product = 1;
 		int sum = 0;
@@ -117,8 +111,7 @@ class Solution {
 		return product - sum;
 	}
 
-
-	//1295. Find Numbers with Even Number of Digits
+	// 1295. Find Numbers with Even Number of Digits
 	public int findNumbers(int[] nums) {
 		int result = 0;
 		for (int num : nums) {
@@ -134,7 +127,7 @@ class Solution {
 		return result;
 	}
 
-	//1313. Decompress Run-Length Encoded List
+	// 1313. Decompress Run-Length Encoded List
 	public int[] decompressRLElist(int[] nums) {
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < nums.length / 2; i++) {
@@ -170,7 +163,7 @@ class Solution {
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = i; j < nums.length; j++) {
 				if (target == (nums[i] + nums[j])) {
-					int[] n = {i, j};
+					int[] n = { i, j };
 					return n;
 				}
 			}
@@ -220,6 +213,5 @@ class Solution {
 		Solution solution = new Solution();
 		solution.balancedStringSplit("RLRRLLRLRL");
 	}
-
 
 }
