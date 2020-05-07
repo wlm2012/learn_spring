@@ -7,7 +7,17 @@ import org.springframework.context.annotation.Bean;
 
 // @Configuration
 // @Import(User.class)
-public class TestConfig {
+
+/**
+ * 1）@Component...
+ * 2) @Bean 
+ * 3) @Import
+ *    implements ImportSelector
+ *    implements ImportBeanDefinitionRegistrar
+ */
+
+
+public class TestConfig{
     
 
     @Bean
