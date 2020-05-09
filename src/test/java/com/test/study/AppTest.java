@@ -28,6 +28,8 @@ public class AppTest {
 
     @Test
     public void newTimeTest() {
+
+        NewDate.changeLocalDateTime(LocalDateTime.now(),111L);
         System.out.println(NewDate.stringToLocalDateTime("2020-01-31 21:59:59", "yyyy-MM-dd HH:mm:ss"));
         System.out.println(NewDate.stringToLocalDate("2020-01-31 21:59:59", "yyyy-MM-dd HH:mm:ss"));
         System.out.println(NewDate.localDateTimeToString(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss"));

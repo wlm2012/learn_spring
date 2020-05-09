@@ -6,6 +6,11 @@ import java.time.format.DateTimeFormatter;
 
 public class NewDate {
 
+
+    public static void changeLocalDateTime(LocalDateTime lDateTime,long day) {
+        System.out.println(LocalDateTime.now().plusDays(day));
+    }
+
     public static LocalDateTime stringToLocalDateTime(String s, String format) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
         return LocalDateTime.parse(s, dtf);
