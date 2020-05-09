@@ -2,6 +2,7 @@ package com.test.study;
 
 import java.util.ServiceLoader;
 
+import com.test.study.util.arrays.ArraysTest;
 import com.test.study.util.innerclass.OutClass;
 import com.test.study.util.proxy.pay;
 import com.test.study.util.stream.StreamTest;
@@ -16,15 +17,20 @@ public class AppTest {
      * Rigorous Test :-)
      */
 
-     @Test
-     public void serviceLoader() {
-         ServiceLoader<pay> pays=ServiceLoader.load(pay.class);
-         for (pay pay : pays) {
-             pay.print();
-         }
-        //  pays.stream().forEach(s->{});
-        
-     }
+    @Test
+    public void arraysizeTest() {
+        ArraysTest.arraysize();
+    }
+
+    @Test
+    public void serviceLoader() {
+        ServiceLoader<pay> pays = ServiceLoader.load(pay.class);
+        for (pay pay : pays) {
+            pay.print();
+        }
+        // pays.stream().forEach(s->{});
+
+    }
 
     @Test
     public void shouldAnswerWithTrue() {

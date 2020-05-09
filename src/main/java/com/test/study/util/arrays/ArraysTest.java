@@ -6,7 +6,7 @@ import java.util.List;
 public class ArraysTest {
 
     /**
-     * list.size与实际的数据量一致
+     * list.size与实际的数据量一致,和设定的容量无关
      */
     public static void arraysize() {
         List<String> list = new ArrayList<>(100);
