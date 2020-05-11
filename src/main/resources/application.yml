@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: test
+    active: test1
 
 mybatis:
   # 配置xml 的扫描路径
@@ -117,3 +117,9 @@ spring:
         login-username: admin
         # 登录密码
         login-password: 123456
+
+
+---
+#数据库设置
+spring:
+  profiles: test1

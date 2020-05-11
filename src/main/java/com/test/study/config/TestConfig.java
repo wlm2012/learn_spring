@@ -31,7 +31,7 @@ public class TestConfig{
         return user;
     }
 
-    @Bean(initMethod = "init" ,destroyMethod = "destroy")
+    @Bean(initMethod = "init01" ,destroyMethod = "destroy01")
     public User user01() {
         return new User(11L,"ww",22,"qq.com");
     }
