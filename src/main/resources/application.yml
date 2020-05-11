@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: test
+    active: dev
 
 mybatis:
   # 配置xml 的扫描路径
