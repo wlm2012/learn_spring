@@ -2,19 +2,20 @@ package com.test.study;
 
 import com.test.study.util.arrays.ListTest;
 
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Test {
+public class TestApp {
 
 	ArrayList<String> list = new ArrayList<>();
 
-	public static void main(String[] args) {
-		test6();
-	}
 
+
+	@Test
 	public static void test4() {
 		int count = 123411;
 		int SlicePagNum = 1000;
@@ -33,6 +34,7 @@ public class Test {
 		System.out.println(strIn);
 	}
 
+	@Test
 	public static void test3() {
 		String[] ss = {"11", "22"};
 		for (String s : ss) {
