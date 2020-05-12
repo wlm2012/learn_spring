@@ -22,8 +22,8 @@ class StudyApplicationTests {
 	@Test
 	public void beanTest() {
 
-		//only single bean 
-		// User bean= applicationContext.getBean(User.class);
+		//only one bean 
+		//User bean= applicationContext.getBean(User.class);
 
 		String[] beanName=applicationContext.getBeanNamesForType(User.class);
 
