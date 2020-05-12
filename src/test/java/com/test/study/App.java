@@ -1,4 +1,4 @@
-package com.test.study.util;
+package com.test.study;
 
 /**
  * Hello world!

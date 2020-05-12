@@ -1,4 +1,4 @@
-package com.test.study.util;
+package com.test.study;
 
 import com.test.study.util.arrays.ListTest;
 
