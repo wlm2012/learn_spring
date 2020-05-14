@@ -15,6 +15,8 @@ public class StreamTest {
         String[] s = { "ww3", "qq", "ee" };
         List<String> words = new ArrayList<>();
         words = Arrays.asList(s);
+        Stream.of(s).forEach(System.out::println);
+        Arrays.stream(s,1,3).forEach(System.out::println);
         long num = words.stream().filter(w -> w.length() > 2).count();
         System.out.println(num);
     }
