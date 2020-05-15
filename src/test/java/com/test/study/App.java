@@ -17,7 +17,8 @@ public class App {
 
     @Test
     public void streamTest() {
-        StreamTest.test();
+        // StreamTest.test();
+        StreamTest.generateStream();
     }
 
     @Test
