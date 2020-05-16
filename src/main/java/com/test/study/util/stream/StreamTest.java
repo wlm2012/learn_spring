@@ -50,6 +50,14 @@ public class StreamTest {
 
     }
 
+    public static void ReduceStream() {
+
+        String[] ss = { "hello welcome", "world hello", "hello world", "hello world welcome" };
+        Stream<String> testStream = Stream.of(ss);
+        System.out.println(testStream.count());
+
+    }
+
     public static void test1() {
 
         String[] s = { "ww3", "qq", "ee" };
