@@ -29,11 +29,17 @@ public class StreamTest {
     }
 
     public static void generateInfiniteStream() {
-        
-        var limit = new BigInteger("10");
-        Stream.iterate(BigInteger.ZERO, n -> n.compareTo(limit) < 0, n -> n.add(BigInteger.ONE))
-                .forEach(System.out::println);
 
+        Stream<Double> stream = Stream.generate(Math::random);
+        stream.forEach(System.out::println);
+    }
+
+    public static void flatmapTest() {
+        String[] ss = { "hello welcome", "world hello", "hello world", "hello world welcome" };
+        Stream<String> testStream = Stream.of(ss);
+        testStream.map(s -> Arrays.stream(s.split(" "))).forEach(s -> System.out.println(Arrays.toString(s.toArray())));
+        testStream = Stream.of(ss);
+        testStream.flatMap(str -> Arrays.stream(str.split(" "))).forEach(strStream -> System.out.println(strStream));
     }
 
     public static void generateStream() {

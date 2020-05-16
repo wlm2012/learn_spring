@@ -18,7 +18,7 @@ public class App {
     @Test
     public void streamTest() {
         // StreamTest.test();
-        StreamTest.generateStream();
+        StreamTest.flatmapTest();
     }
 
     @Test
