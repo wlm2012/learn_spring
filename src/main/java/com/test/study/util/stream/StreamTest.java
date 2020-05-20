@@ -3,7 +3,11 @@ package com.test.study.util.stream;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -26,6 +30,33 @@ public class StreamTest {
         // Arrays.stream(array, from, to)
         Arrays.stream(s, 1, 3).forEach(System.out::println);
 
+    }
+
+    public static void CollectorsStream() {
+        String[] s = { "ww3", "qq", "ee" };
+        String[] ss = Stream.of(s).toArray(String[]::new);
+        List<String> list = Arrays.stream(s).collect(Collectors.toList());
+        Set<String> set = Stream.of(s).collect(Collectors.toSet());
+        TreeSet<String> treeSet = Stream.of(s).collect(Collectors.toCollection(TreeSet::new));
+        String result = Arrays.stream(s).collect(Collectors.joining(","));
+
+        List<Object> lObjects = new ArrayList<>();
+        lObjects.add("qq");
+        lObjects.add("www");
+        lObjects.add("eeee");
+
+        String result1=lObjects.stream().map(Object::toString).collect(Collectors.joining(","));
+        IntSummaryStatistics Summary=lObjects.stream().map(Object::toString)
+        .collect(Collectors.summarizingInt(String::length));
+
+        System.out.println(ss);
+        System.out.println(list);
+        System.out.println(set);
+        System.out.println(treeSet);
+        System.out.println(result);
+        System.out.println(result1);
+        System.out.println(Summary.getAverage());
+        System.out.println(Summary.getMax());
     }
 
     public static void generateInfiniteStream() {
