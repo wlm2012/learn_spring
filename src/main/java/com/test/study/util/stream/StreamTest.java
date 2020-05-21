@@ -43,11 +43,13 @@ public class StreamTest {
         List<Object> lObjects = new ArrayList<>();
         lObjects.add("qq");
         lObjects.add("www");
-        lObjects.add("eeee");
+        lObjects.add("eeeee");
+        lObjects.add(null);
 
-        String result1=lObjects.stream().map(Object::toString).collect(Collectors.joining(","));
-        IntSummaryStatistics Summary=lObjects.stream().map(Object::toString)
-        .collect(Collectors.summarizingInt(String::length));
+        String result1 = lObjects.stream().filter(n->null!=n).map(Object::toString)
+                .collect(Collectors.joining(","));
+        IntSummaryStatistics Summary = lObjects.stream().filter(n->null!=n).map(Object::toString)
+                .collect(Collectors.summarizingInt(String::length));
 
         System.out.println(ss);
         System.out.println(list);
@@ -57,6 +59,20 @@ public class StreamTest {
         System.out.println(result1);
         System.out.println(Summary.getAverage());
         System.out.println(Summary.getMax());
+    }
+
+    public static void iterateStrem() {
+        Integer[] integers = Stream.iterate(0, n -> n + 2).limit(10).toArray(Integer[]::new);
+        Object[] objects = Stream.iterate(0, n -> n + 2).limit(10).toArray();
+        System.out.println(integers.length);
+
+        try {
+            Integer[] numbers = (Integer[]) objects;
+            System.out.println(numbers);
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
     }
 
     public static void generateInfiniteStream() {
