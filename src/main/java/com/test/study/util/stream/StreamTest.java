@@ -3,12 +3,17 @@ package com.test.study.util.stream;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.IntSummaryStatistics;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.test.study.util.entity.Person;
 
 /**
  * StreamTest
@@ -16,7 +21,7 @@ import java.util.stream.Stream;
 public class StreamTest {
 
     // STREAM CREATION
-    public static void test() {
+    public static void creationStream() {
         String[] s = { "ww3", "qq", "ee" };
 
         // Arrays.asList .stream()
@@ -30,6 +35,22 @@ public class StreamTest {
         // Arrays.stream(array, from, to)
         Arrays.stream(s, 1, 3).forEach(System.out::println);
 
+    }
+
+    public static void toMap() {
+        Map<Integer, String> map = personStream().collect(Collectors.toMap(Person::getId, Person::getName));
+        System.out.println(map);
+        HashMap<Integer, String> hashmap = personStream()
+                .collect(Collectors.toMap(Person::getId, Person::getName, (existingValue, newValue) -> {
+                    throw new IllegalStateException();
+                }, HashMap::new));
+        System.out.println(hashmap);
+        
+
+    }
+
+    public static Stream<Person> personStream() {
+        return Stream.of(new Person(1, "name", 11), new Person(2, "qqq", 22), new Person(3, "www", 33));
     }
 
     public static void CollectorsStream() {
@@ -46,9 +67,9 @@ public class StreamTest {
         lObjects.add("eeeee");
         lObjects.add(null);
 
-        String result1 = lObjects.stream().filter(n->null!=n).map(Object::toString)
+        String result1 = lObjects.stream().filter(n -> null != n).map(Object::toString)
                 .collect(Collectors.joining(","));
-        IntSummaryStatistics Summary = lObjects.stream().filter(n->null!=n).map(Object::toString)
+        IntSummaryStatistics Summary = lObjects.stream().filter(n -> null != n).map(Object::toString)
                 .collect(Collectors.summarizingInt(String::length));
 
         System.out.println(ss);
@@ -73,6 +94,12 @@ public class StreamTest {
             System.out.println(e);
             e.printStackTrace();
         }
+
+        Iterator<Integer> iterator = Stream.iterate(0, n -> n + 1).limit(10).iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator);
+        }
+
     }
 
     public static void generateInfiniteStream() {
