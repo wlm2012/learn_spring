@@ -1,15 +1,7 @@
 package com.test.study.util.stream;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.IntSummaryStatistics;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,12 +9,14 @@ import com.test.study.util.entity.Person;
 
 /**
  * StreamTest
+ *
+ * @author wlm
  */
 public class StreamTest {
 
     // STREAM CREATION
     public static void creationStream() {
-        String[] s = { "ww3", "qq", "ee" };
+        String[] s = {"ww3", "qq", "ee"};
 
         // Arrays.asList .stream()
         List<String> words = Arrays.asList(s);
@@ -45,7 +39,16 @@ public class StreamTest {
                     throw new IllegalStateException();
                 }, HashMap::new));
         System.out.println(hashmap);
-        
+
+        HashMap<String, Set<String>> countryLanguageSets = Stream.of(Locale.getAvailableLocales())
+                .collect(Collectors.toMap(
+                        Locale::getDisplayCountry,
+                        l -> Collections.singleton(l.getDisplayCountry()),
+                        (a, b) -> {
+                            Set<String> union = new HashSet<>(a);
+                            union.addAll(b);
+                            return union;
+                        }, HashMap::new));
 
     }
 
@@ -54,7 +57,7 @@ public class StreamTest {
     }
 
     public static void CollectorsStream() {
-        String[] s = { "ww3", "qq", "ee" };
+        String[] s = {"ww3", "qq", "ee"};
         String[] ss = Stream.of(s).toArray(String[]::new);
         List<String> list = Arrays.stream(s).collect(Collectors.toList());
         Set<String> set = Stream.of(s).collect(Collectors.toSet());
@@ -109,7 +112,7 @@ public class StreamTest {
     }
 
     public static void flatmapTest() {
-        String[] ss = { "hello welcome", "world hello", "hello world", "hello world welcome" };
+        String[] ss = {"hello welcome", "world hello", "hello world", "hello world welcome"};
         Stream<String> testStream = Stream.of(ss);
         testStream.map(s -> Arrays.stream(s.split(" "))).forEach(s -> System.out.println(Arrays.toString(s.toArray())));
         testStream = Stream.of(ss);
@@ -126,7 +129,7 @@ public class StreamTest {
 
     public static void ReduceStream() {
 
-        String[] ss = { "hello welcome", "world hello", "hello world", "hello world welcome" };
+        String[] ss = {"hello welcome", "world hello", "hello world", "hello world welcome"};
         Stream<String> testStream = Stream.of(ss);
         System.out.println(testStream.count());
 
@@ -134,7 +137,7 @@ public class StreamTest {
 
     public static void test1() {
 
-        String[] s = { "ww3", "qq", "ee" };
+        String[] s = {"ww3", "qq", "ee"};
         List<String> words = new ArrayList<>();
         words = Arrays.asList(s);
         words.forEach(System.out::print);
