@@ -2,7 +2,11 @@ package com.test.study;
 
 import com.test.study.util.stream.StreamTest;
 
+import com.test.study.util.work.XmlOutput;
+import javassist.bytecode.CodeIterator;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 /**
  * Hello world!
@@ -29,6 +33,11 @@ public class App {
         System.out.println(value);
         System.out.println(value1);
 
+    }
+
+    @Test
+    public void xmlOutputTest() throws IOException {
+        XmlOutput.readFile();
     }
 
 }
