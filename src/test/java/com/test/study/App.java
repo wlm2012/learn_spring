@@ -36,7 +36,7 @@ public class App {
     }
 
     @Test
-    public void xmlOutputTest() throws IOException {
+    public void xmlOutputTest() throws Exception {
         XmlOutput.readFile();
     }
 
