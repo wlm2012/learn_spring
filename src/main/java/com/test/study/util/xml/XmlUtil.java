@@ -24,14 +24,28 @@ public class XmlUtil {
 			Node child = children.item(i);
 			if (child instanceof Element) {
 				Element childElement = (Element) child;
+
+				NamedNodeMap attributes = childElement.getAttributes();
+				for (int j = 0; j < attributes.getLength(); j++)
+				{
+					Node attribute = attributes.item(j);
+					String name = attribute.getNodeName();
+					String value = attribute.getNodeValue();
+					System.out.println(name+"   "+value);
+				}
+
+
 				Text textNode = (Text) childElement.getFirstChild();
 				String text = textNode.getData().trim();
-				if (childElement.getTagName().equals("item_list")) {
+				System.out.println(text);
+				if ("name".equals(childElement.getTagName())) {
 					System.out.println(text);
 				}
 
 			}
 		}
+
+
 	}
 
 

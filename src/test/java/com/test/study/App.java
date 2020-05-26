@@ -45,7 +45,7 @@ public class App {
 
 	@Test
 	public void xmlUtilTest() throws IOException, SAXException, ParserConfigurationException {
-		String path = "C:\\Users\\lenovo2\\Desktop\\v6\\t_fund_storage_plan_det.xml";
+		String path = "C:\\Users\\wlm\\Desktop\\a.txt";
 		File file = new File(path);
 		XmlUtil.xmlParse(file);
 	}
