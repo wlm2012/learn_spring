@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 public class XmlOutput {
 
 	private static String path = "C:\\Users\\lenovo2\\Desktop\\v6\\a.txt";
+	private static String pathOut="";
 	private static int size = 3;
 
 	public static void readFile() throws Exception {
@@ -33,5 +34,9 @@ public class XmlOutput {
 		ArrayList<String> title=Stream.of(list.get(0).split(" ")).filter(s -> !StringUtil.isEmpty(s)).collect(Collectors.toCollection(ArrayList::new));
 		Stream<String> input = Stream.of(files[0].split("\\r\\n")).filter(s -> !StringUtil.isEmpty(s));
 		String[] output = files[1].split("\\r\\n");
+	}
+
+	public static void writeXml(){
+
 	}
 }

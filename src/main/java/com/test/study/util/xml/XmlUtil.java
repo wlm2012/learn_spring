@@ -57,5 +57,9 @@ public class XmlUtil {
 
 	}
 
+	public static void xmlLoad(File file){
+
+	}
+
 
 }
