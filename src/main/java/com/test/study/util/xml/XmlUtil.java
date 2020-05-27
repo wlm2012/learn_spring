@@ -1,8 +1,11 @@
 package com.test.study.util.xml;
 
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
+import javax.persistence.criteria.Root;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -45,6 +48,12 @@ public class XmlUtil {
 			}
 		}
 
+
+	}
+
+	public static void  xmlParse(String s) throws DocumentException {
+		org.dom4j.Document document= DocumentHelper.parseText(s);
+		org.dom4j.Element element=document.getRootElement();
 
 	}
 
