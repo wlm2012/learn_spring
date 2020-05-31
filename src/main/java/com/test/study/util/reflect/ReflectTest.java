@@ -14,7 +14,7 @@ import java.util.Arrays;
  * @author wlm
  */
 
-@SuppressWarnings(value={"all"})
+
 public class ReflectTest {
 
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException, NoSuchFieldException {

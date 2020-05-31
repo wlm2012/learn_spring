@@ -5,7 +5,8 @@ package com.test.study.util.innerclass;
  * @author lenovo2
  */
 
-@SuppressWarnings(value={"all"})
+
+
 public class OutClass {
 
 	public static void main(String[] args) {

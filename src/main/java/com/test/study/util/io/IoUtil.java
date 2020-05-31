@@ -11,15 +11,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * @author lenovo2
+ */
 public class IoUtil {
-    public static void main(String[] args) throws IOException {
-        String FromPath = "C:\\Users\\lenovo2\\Desktop\\业务影像化.postman_collection.json";
-        String ToPath = "";
 
-        FromPath = RepalceSeparator(FromPath);
-        ToPath = RepalceSeparator(ToPath);
-        // readFile(FromPath);
-    }
 
     // 根据系统自动修改斜杆和反斜杠
     public static String RepalceSeparator(String s) {
