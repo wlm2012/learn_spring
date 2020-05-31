@@ -4,6 +4,9 @@ import com.test.study.entity.User;
 
 import org.springframework.beans.factory.FactoryBean;
 
+/**
+ * @author wlm
+ */
 public class UserFactory implements FactoryBean<User>{
 
     @Override

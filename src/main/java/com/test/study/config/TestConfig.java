@@ -14,8 +14,12 @@ import org.springframework.context.annotation.Bean;
  * 3) @Import
  *    implements ImportSelector
  *    implements ImportBeanDefinitionRegistrar
+ *
  */
 
+/**
+ *  @author wlm
+ */
 
 public class TestConfig{
     

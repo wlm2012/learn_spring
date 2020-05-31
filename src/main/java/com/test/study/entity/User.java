@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
  * 1) @Bean initMethod  destroyMethod
  * 2) implements InitializingBean, DisposableBean
  * 3) @PostConstruct  @PreDestroy  加在方法上
- * 4) implements BeanPostProcessor 
+ * 4) implements BeanPostProcessor
+ * @author wlm
  */
 
 
