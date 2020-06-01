@@ -1,5 +1,6 @@
 package com.test.study;
 
+import com.test.study.util.entity.Student;
 import com.test.study.util.stream.StreamTest;
 
 import com.test.study.util.work.XmlOutput;
@@ -48,6 +49,16 @@ public class App {
 		String path = "C:\\Users\\wlm\\Desktop\\a.txt";
 		File file = new File(path);
 		XmlUtil.xmlParse(file);
+	}
+
+	@Test
+	public void extendsTest(){
+		Student student=new Student();
+		student.setId(1);
+		student.setSex("1");
+		System.out.println(student.getId());
+		//student.id 无法直接访问
+		System.out.println(student.sex);
 	}
 
 }
