@@ -2,6 +2,12 @@ package com.test.study.util.work;
 
 import com.test.study.util.StringUtil.StringUtil;
 import com.test.study.util.io.IoUtil;
+import org.apache.logging.log4j.spi.ReadOnlyThreadContextMap;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +21,7 @@ import java.util.stream.Stream;
 public class XmlOutput {
 
 	private static String path = "C:\\Users\\lenovo2\\Desktop\\v6\\a.txt";
-	private static String pathOut="";
+	private static String pathOut = "";
 	private static int size = 3;
 
 	public static void readFile() throws Exception {
@@ -31,12 +37,16 @@ public class XmlOutput {
 //		String output=list.get(2);
 
 
-		ArrayList<String> title=Stream.of(list.get(0).split(" ")).filter(s -> !StringUtil.isEmpty(s)).collect(Collectors.toCollection(ArrayList::new));
+		ArrayList<String> title = Stream.of(list.get(0).split(" ")).filter(s -> !StringUtil.isEmpty(s)).collect(Collectors.toCollection(ArrayList::new));
 		Stream<String> input = Stream.of(files[0].split("\\r\\n")).filter(s -> !StringUtil.isEmpty(s));
 		String[] output = files[1].split("\\r\\n");
 	}
 
-	public static void writeXml(){
-
+	public static void writeXml() throws IOException {
+		Document doc = DocumentHelper.createDocument();
+		Element root = doc.addElement("function");
+		root.addAttribute("method_name", "FundStoragePlanDetQuy");
+		XMLWriter xmlWriter = new XMLWriter();
+		xmlWriter.write(root);
 	}
 }
