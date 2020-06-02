@@ -52,8 +52,8 @@ public class App {
 	}
 
 	@Test
-	public void extendsTest(){
-		Student student=new Student();
+	public void extendsTest() {
+		Student student = new Student();
 		student.setId(1);
 		student.setSex("1");
 		System.out.println(student.getId());

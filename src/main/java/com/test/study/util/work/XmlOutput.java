@@ -27,26 +27,45 @@ public class XmlOutput {
 	public static void readFile() throws Exception {
 		String file = IoUtil.readFile(path);
 		String[] files = file.split("\\r\\n\\r\\n");
-		ArrayList<String> list = Stream.of(files).filter(s -> !StringUtil.isEmpty(s)).filter(s -> !s.contains("\\r\\n")).collect(Collectors.toCollection(ArrayList::new));
-		if (list.size() != size) {
+		ArrayList<String> list = Stream.of(files).filter(s -> !StringUtil.isEmpty(s)).filter(s -> !StringUtil.isEmpty(s)).collect(Collectors.toCollection(ArrayList::new));
+		if (list.size() > size) {
 			throw new Exception("格式不正确");
 		}
 
-//		String tile=list.get(0);
-//		String input=list.get(1);
-//		String output=list.get(2);
-
-
-		ArrayList<String> title = Stream.of(list.get(0).split(" ")).filter(s -> !StringUtil.isEmpty(s)).collect(Collectors.toCollection(ArrayList::new));
+		ArrayList<String> title = Stream.of(list.get(0).replace("\\r\\n"," ").split(" ")).filter(s -> !StringUtil.isEmpty(s)).collect(Collectors.toCollection(ArrayList::new));
 		Stream<String> input = Stream.of(files[0].split("\\r\\n")).filter(s -> !StringUtil.isEmpty(s));
 		String[] output = files[1].split("\\r\\n");
 	}
 
 	public static void writeXml() throws IOException {
 		Document doc = DocumentHelper.createDocument();
-		Element root = doc.addElement("function");
-		root.addAttribute("method_name", "FundStoragePlanDetQuy");
-		XMLWriter xmlWriter = new XMLWriter();
-		xmlWriter.write(root);
+		Element function = doc.addElement("function");
+		function.addAttribute("method_name", "FundStoragePlanDetQuy");
+		function.addAttribute("desc", "资金存储计划明细查询");
+
+
+		//service
+		Element service = function.addElement("service");
+
+		//in
+		Element in = service.addElement("in");
+		Element item1 = in.addElement("item");
+		item1.addAttribute("name", "plan_no");
+		Element item2 = in.addElement("item");
+		item2.addAttribute("name", "stat");
+
+
+		//ecip
+		Element ecip = function.addElement("ecip");
+		Element server_name = ecip.addElement("server_name");
+		server_name.addText("HTT_JSON_SVR");
+		Element page = ecip.addElement("page");
+		page.addAttribute("module", "page1");
+		page.addAttribute("node", "in");
+
+		OutputFormat format = OutputFormat.createPrettyPrint();
+		format.setEncoding("UTF-8");
+		XMLWriter xmlWriter = new XMLWriter(format);
+		xmlWriter.write(function);
 	}
 }
