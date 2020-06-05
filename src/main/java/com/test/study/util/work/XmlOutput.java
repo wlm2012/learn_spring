@@ -55,6 +55,10 @@ public class XmlOutput {
 		item2.addAttribute("name", "stat");
 
 
+		//out
+		Element out=service.addElement("out");
+
+
 		//ecip
 		Element ecip = function.addElement("ecip");
 		Element server_name = ecip.addElement("server_name");
@@ -65,6 +69,7 @@ public class XmlOutput {
 
 		OutputFormat format = OutputFormat.createPrettyPrint();
 		format.setEncoding("UTF-8");
+		format.setNewlines(true);
 		XMLWriter xmlWriter = new XMLWriter(format);
 		xmlWriter.write(function);
 	}
