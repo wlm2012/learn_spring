@@ -61,9 +61,6 @@ public class App {
 		System.out.println(student.sex);
 	}
 
-	@Test
-	public void writeXmlTest() throws IOException {
-		XmlOutput.writeXml();
-	}
+
 
 }
