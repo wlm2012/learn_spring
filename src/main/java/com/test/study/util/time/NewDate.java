@@ -8,7 +8,7 @@ public class NewDate {
 
 
     public static void changeLocalDateTime(LocalDateTime lDateTime,long day) {
-        System.out.println(LocalDateTime.now().plusDays(day));
+        System.out.println(lDateTime.plusDays(day));
     }
 
     public static LocalDateTime stringToLocalDateTime(String s, String format) {
