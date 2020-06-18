@@ -14,7 +14,7 @@ spring:
 ---
 spring:
   profiles: test
-  datasource:
+  datasource1:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/study?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
     username: root
