@@ -1,6 +1,7 @@
 package com.test.study.guides;
 
-import com.test.study.service.StorageService;
+import com.test.study.guides.storage.StorageFileNotFoundException;
+import com.test.study.guides.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Collection;
 import java.util.stream.Collectors;
 
 /**
@@ -32,7 +32,7 @@ public class FileUploadController {
     @GetMapping("/")
     public String listUploadedFiles(Model model) {
         model.addAttribute("file", storageService.loadAll().map(
-                path -> MvcUriComponentsBuilder.fromMethod(
+                path -> MvcUriComponentsBuilder.fromMethodName(
                         FileUploadController.class,
                         "serveFile",
                         path.getFileName().toString()).build().toUri().toString())

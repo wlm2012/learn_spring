@@ -1,4 +1,4 @@
-package com.test.study.service;
+package com.test.study.guides.storage;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
