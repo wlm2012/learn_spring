@@ -61,6 +61,15 @@ public class App {
 		System.out.println(student.sex);
 	}
 
+	@Test
+	public void  nullTest(){
+		Object o=null;
+		if ("2".equals(o)){
+			System.out.println("true");
+		}else {
+			System.out.println("false");
+		}
+	}
 
 
 }
