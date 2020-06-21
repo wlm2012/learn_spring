@@ -29,7 +29,7 @@ public class FileUploadController {
         this.storageService = storageService;
     }
 
-    @GetMapping("/")
+//    @GetMapping("/")
     public String listUploadedFiles(Model model) {
         model.addAttribute("file", storageService.loadAll().map(
                 path -> MvcUriComponentsBuilder.fromMethodName(
@@ -49,7 +49,7 @@ public class FileUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @PostMapping("/")
+//    @PostMapping("/")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
         storageService.store(file);

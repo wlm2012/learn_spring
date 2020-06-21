@@ -27,6 +27,9 @@ spring:
         exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
         # 配置DruidStatViewServlet
       stat-view-servlet:
+        # 1.1.10版本后需要添加，不然无法打开内置监控
+        enabled: true
+        # 内置监控的页面
         url-pattern: "/druid/*"
         # IP白名单(没有配置或者为空，则允许所有访问)
         allow: 127.0.0.1,192.168.163.1
@@ -43,7 +46,7 @@ mybatis:
   # 配置xml 的扫描路径
   mapper-locations: classpath:mapper/*.xml
   check-config-location: true
-  type-aliases-package: org.example.demo.entity
+  type-aliases-package: com.test.study.mapper
 
 
 pagehelper:
