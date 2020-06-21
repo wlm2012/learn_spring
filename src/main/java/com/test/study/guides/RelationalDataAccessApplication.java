@@ -13,6 +13,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author lenovo2
+ */
 @Component
 public class RelationalDataAccessApplication implements CommandLineRunner {
 
