@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author wlm
  */
-@Component
+//@Component
 public class ScheduledTasks {
 
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);

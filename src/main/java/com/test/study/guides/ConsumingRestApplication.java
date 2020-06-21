@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 
-@Configuration
+//@Configuration
 public class ConsumingRestApplication {
     
 
@@ -30,7 +30,7 @@ public class ConsumingRestApplication {
 		return builder.build();
 	}
 
-//	@Bean
+	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
 			Quote quote = restTemplate.getForObject(
