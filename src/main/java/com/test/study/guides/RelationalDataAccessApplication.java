@@ -14,9 +14,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 /**
- * @author lenovo2
+ * @author wlm
  */
-@Component
+//@Component
 public class RelationalDataAccessApplication implements CommandLineRunner {
 
     @Autowired
@@ -29,6 +29,7 @@ public class RelationalDataAccessApplication implements CommandLineRunner {
 
         log.info("Creating tables");
 
+        // DROP TABLE customers IF EXISTS 改为 "DROP TABLE  IF EXISTS customers" ，不然alibaba druid 连接池报错
         jdbcTemplate.execute("DROP TABLE  IF EXISTS customers");
         jdbcTemplate.execute("CREATE TABLE customers(" + "id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
 
