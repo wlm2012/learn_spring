@@ -5,6 +5,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * @author wlm
+ */
 public class Bank {
     private final double[] accounts;
     private Lock bankLock;

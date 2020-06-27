@@ -4,6 +4,10 @@ import java.io.IOException;
 
 
 
+/**
+ * @author wlm
+ */
+
 //如果return一个值后，会覆盖原来的报错信息，开启testEx2()中的return，则testEx1()无法捕获错误
 public class TestException {
 
