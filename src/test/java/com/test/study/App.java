@@ -1,5 +1,6 @@
 package com.test.study;
 
+import com.test.study.util.concurrency.ThreadTest;
 import com.test.study.util.entity.Student;
 import com.test.study.util.stream.StreamTest;
 
@@ -71,5 +72,11 @@ public class App {
 		}
 	}
 
+
+	@Test
+	public void threadTest1(){
+		ThreadTest test=new ThreadTest();
+		test.threadTest();
+	}
 
 }
