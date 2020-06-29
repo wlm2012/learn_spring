@@ -19,7 +19,7 @@ import java.util.stream.Stream;
  */
 public class XmlOutput {
 
-    private static String path = "C:\\Users\\wlm\\Desktop\\v6\\a.txt";
+    private static String path = "C:\\Users\\lenovo2\\Desktop\\v6\\a.txt";
 
 
     public static void readFile() throws IOException {
