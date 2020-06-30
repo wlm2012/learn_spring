@@ -4,15 +4,18 @@ import com.test.study.util.concurrency.ThreadTest;
 import com.test.study.util.entity.Student;
 import com.test.study.util.stream.StreamTest;
 
+import com.test.study.util.time.OldDate;
 import com.test.study.util.work.XmlOutput;
 import com.test.study.util.xml.XmlUtil;
 import javassist.bytecode.CodeIterator;
+import org.apache.coyote.http11.filters.VoidInputFilter;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
 /**
  * Hello world!
@@ -77,6 +80,15 @@ public class App {
 	public void threadTest1(){
 		ThreadTest test=new ThreadTest();
 		test.threadTest();
+	}
+
+	@Test
+	public void  testCalendar(){
+		Calendar checkBeginCal = Calendar.getInstance();
+		checkBeginCal.set(Calendar.MONTH, 0);
+		checkBeginCal.set(Calendar.DATE, 1);
+		String checkBeginDate = OldDate.dateToString(checkBeginCal.getTime(), "yyyy-MM-dd");
+		System.out.println(checkBeginDate);
 	}
 
 }

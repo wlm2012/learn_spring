@@ -6,6 +6,9 @@ import java.util.stream.*;
 import static java.util.stream.LongStream.*;
 import java.io.*;
 
+/**
+ * @author wlm
+ */
 public class ParallelPrime {
     static final int COUNT = 100_000;
 
