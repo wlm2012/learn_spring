@@ -19,6 +19,7 @@ public class InterruptTest {
 //        Thread.sleep(1000);
         thread.interrupt();
         System.out.println(thread.isInterrupted());
+        System.out.println(thread.isInterrupted());
         System.out.println(thread.getName()+"   "+thread.getState());
     }
 }

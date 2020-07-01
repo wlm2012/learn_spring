@@ -2,12 +2,14 @@ package com.test.study;
 
 import com.test.study.util.arrays.ListTest;
 
+import org.hibernate.annotations.CollectionId;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TestApp {
 
@@ -84,5 +86,32 @@ public class TestApp {
 		System.out.println(xlx.split("\\.")[0]);
 		System.out.println(xlx.substring(0, xlx.lastIndexOf(".")));
 	}
+
+
+	@Test
+	public void  test7(){
+		List<String> list=new ArrayList<>();
+		list.add("1");
+		list.add("2");
+
+/*		for (int i=0;i<list.size();i++){
+			if ("2".equals(list.get(i))){
+				list.remove(list.get(i));
+			}
+		}*/
+
+
+		//foreach 中不能使用 【add/remove】 操作
+/*		for (String s:list) {
+			if ("2".equals(s)){
+				list.remove(s);
+			}
+		}*/
+
+		System.out.println(list);
+	}
+
+	@Test
+	public void
 
 }
