@@ -1,5 +1,6 @@
 package com.test.study;
 
+import com.google.common.base.Optional;
 import com.test.study.util.arrays.ListTest;
 
 import org.hibernate.annotations.CollectionId;
@@ -112,6 +113,8 @@ public class TestApp {
 	}
 
 	@Test
-	public void
+	public void test01(){
+
+	}
 
 }
