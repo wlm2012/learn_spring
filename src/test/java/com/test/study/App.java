@@ -91,4 +91,20 @@ public class App {
 		System.out.println(checkBeginDate);
 	}
 
+	@Test
+	public void test1(){
+		String a=null;
+		try {
+//			int z=0/0;
+			if (a.equals("1")){
+				System.out.println("a");
+			}
+		}catch (Exception e){
+			System.out.println(e.getMessage()==null);
+			System.out.println("null".equals(e.getMessage()));
+//			System.out.println(e.getMessage().length());
+		}
+
+	}
+
 }
