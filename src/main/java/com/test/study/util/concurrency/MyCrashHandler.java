@@ -21,7 +21,9 @@ public class MyCrashHandler implements UncaughtExceptionHandler{
     }
 
 
-    //捕获多线程中的错误
+    /**
+    * 捕获多线程中的错误
+    */
     public static void test1() {
         Runnable run = () -> {
             int a = 1 / 0;

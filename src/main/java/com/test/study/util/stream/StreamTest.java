@@ -45,7 +45,7 @@ public class StreamTest {
 		List<String> list = Arrays.stream(s).collect(Collectors.toList());
 		Set<String> set = Stream.of(s).collect(Collectors.toSet());
 		TreeSet<String> treeSet = Stream.of(s).collect(Collectors.toCollection(TreeSet::new));
-		String result = Arrays.stream(s).collect(Collectors.joining(","));
+		String result = Arrays.stream(s).collect(Collectors.joining("','","'","'"));
 
 		List<Object> lObjects = new ArrayList<>();
 		lObjects.add("qq");

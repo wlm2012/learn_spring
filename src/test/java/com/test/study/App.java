@@ -107,4 +107,9 @@ public class App {
 
 	}
 
+	@Test
+	public void  test01(){
+		StreamTest.CollectorsStream();
+	}
+
 }
