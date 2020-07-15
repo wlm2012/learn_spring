@@ -83,7 +83,7 @@ public class TestApp {
 
 	@Test
 	public void test6() {
-		String xlx = "1100003272_fc.xlsx";
+		String xlx = "1100003272_fc";
 		System.out.println(xlx.split("\\.")[0]);
 		System.out.println(xlx.substring(0, xlx.lastIndexOf(".")));
 	}
