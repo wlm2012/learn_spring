@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class NewBank {
 
     private final double[] accounts;
-    private ReentrantLock banklock=new ReentrantLock();
+    private final ReentrantLock banklock=new ReentrantLock();
 
     public NewBank(int n, double initialBalance) {
         accounts = new double[n];
