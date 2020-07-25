@@ -1,6 +1,8 @@
 package com.test.study.util.concurrency;
 
 
+import java.util.concurrent.ArrayBlockingQueue;
+
 /**
  * @author wlm
  */
@@ -24,6 +26,10 @@ public class ThreadTest {
 			var t = new Thread(r);
 			t.start();
 		}
+	}
+
+	public void ArrayBlockingQueueTest(){
+
 	}
 
 }
