@@ -2,6 +2,7 @@ package com.test.study;
 
 import com.test.study.util.concurrency.ThreadTest;
 import com.test.study.util.entity.Student;
+import com.test.study.util.guava.OptionalTest;
 import com.test.study.util.stream.StreamParallelDemo;
 import com.test.study.util.stream.StreamTest;
 
@@ -52,6 +53,10 @@ public class App {
         new StreamParallelDemo(1000_000_00);
     }
 
+    @Test
+    public void optionTest(){
+        OptionalTest.optionTest();
+    }
     @Test
     public void xmlOutputTest() throws Exception {
         XmlOutput.readFile();
