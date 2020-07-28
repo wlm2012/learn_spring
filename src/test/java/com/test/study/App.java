@@ -1,5 +1,6 @@
 package com.test.study;
 
+import com.test.study.util.concurrency.InterruptTest;
 import com.test.study.util.concurrency.ThreadTest;
 import com.test.study.util.entity.Student;
 import com.test.study.util.guava.OptionalTest;
@@ -37,6 +38,12 @@ public class App {
         System.out.println(value);
         System.out.println(value1);
 
+    }
+
+
+    @Test
+    public void interruptTest() throws InterruptedException {
+        InterruptTest.test01();
     }
 
     @Test
