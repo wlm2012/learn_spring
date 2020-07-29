@@ -46,8 +46,6 @@ public class App {
     @Test
     public void completedFutureTest() throws InterruptedException {
         CompletedFutureTest.thenApplyExample();
-
-
     }
 
 
