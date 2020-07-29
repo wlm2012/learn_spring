@@ -1,5 +1,6 @@
 package com.test.study;
 
+import com.test.study.util.concurrency.CompletedFutureTest;
 import com.test.study.util.concurrency.InterruptTest;
 import com.test.study.util.concurrency.ThreadTest;
 import com.test.study.util.entity.Student;
@@ -19,6 +20,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Hello world!
@@ -42,6 +44,14 @@ public class App {
 
 
     @Test
+    public void completedFutureTest() throws InterruptedException {
+        CompletedFutureTest.thenApplyExample();
+
+
+    }
+
+
+    @Test
     public void interruptTest() throws InterruptedException {
         InterruptTest.test01();
     }
@@ -56,14 +66,15 @@ public class App {
     }
 
     @Test
-    public void streamTest01(){
+    public void streamTest01() {
         new StreamParallelDemo(1000_000_00);
     }
 
     @Test
-    public void optionTest(){
+    public void optionTest() {
         OptionalTest.optionTest();
     }
+
     @Test
     public void xmlOutputTest() throws Exception {
         XmlOutput.readFile();
