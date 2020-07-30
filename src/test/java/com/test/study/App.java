@@ -47,7 +47,7 @@ public class App {
 
 
     @Test
-    public void uncaughtTest(){
+    public void uncaughtTest() {
         UncaughtTest.uncaughtTest();
     }
 
