@@ -5,7 +5,7 @@ public class Daemon {
     public static void daemonTest() throws InterruptedException {
 
         Runnable runnable = () -> {
-            for (; ; ) {
+            while (true) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
