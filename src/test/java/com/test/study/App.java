@@ -1,8 +1,6 @@
 package com.test.study;
 
-import com.test.study.util.concurrency.CompletedFutureTest;
-import com.test.study.util.concurrency.InterruptTest;
-import com.test.study.util.concurrency.ThreadTest;
+import com.test.study.util.concurrency.*;
 import com.test.study.util.entity.Student;
 import com.test.study.util.guava.OptionalTest;
 import com.test.study.util.stream.StreamParallelDemo;
@@ -42,6 +40,16 @@ public class App {
 
     }
 
+    @Test
+    public void daemonTest() throws InterruptedException {
+        Daemon.daemonTest();
+    }
+
+
+    @Test
+    public void uncaughtTest(){
+        UncaughtTest.uncaughtTest();
+    }
 
     @Test
     public void completedFutureTest() throws InterruptedException {
