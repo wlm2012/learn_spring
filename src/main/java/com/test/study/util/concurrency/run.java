@@ -1,5 +1,7 @@
 package com.test.study.util.concurrency;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
  * run
  */
@@ -26,6 +28,10 @@ public class run {
         for (int i = 0; i < 10000; i++) {
             System.out.println(i);
         }
+    }
+
+    public static void test1(){
+
     }
 
 

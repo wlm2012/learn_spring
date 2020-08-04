@@ -9,21 +9,22 @@ import java.util.concurrent.locks.ReentrantLock;
 public class NewBank {
 
     private final double[] accounts;
-    private final ReentrantLock banklock=new ReentrantLock();
+    private ReentrantLock banklock = null;
 
     public NewBank(int n, double initialBalance) {
         accounts = new double[n];
         Arrays.fill(accounts, initialBalance);
+        banklock = new ReentrantLock();
     }
 
     public void transfer(int from, int to, int amount) {
 
-        banklock.lock();
-        try {
+//        banklock.lock();
+//        try {
             if (accounts[from] < amount) {
                 return;
             }
-            if (from==to){
+            if (from == to) {
                 return;
             }
             System.out.println(getTotalBalance());
@@ -31,20 +32,19 @@ public class NewBank {
             System.out.printf(" %d from %d to %d  \n", amount, from, to);
             accounts[to] += amount;
             System.out.println(getTotalBalance());
-        }finally {
-            banklock.unlock();
-        }
+//        } finally {
+//            banklock.unlock();
+//        }
 
     }
 
     public double getTotalBalance() {
-        return  Arrays.stream(accounts).sum();
-//        result=Arrays.stream(accounts).collect(coll)
-/*        double total=0;
-        for (double account:accounts) {
-            total+=account;
-        }
-        return total;*/
+        return Arrays.stream(accounts).sum();
+
+    }
+
+    public void printBalance() {
+        System.out.println("---" + Arrays.toString(accounts));
     }
 
 }

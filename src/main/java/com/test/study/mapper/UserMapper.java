@@ -6,7 +6,11 @@ import com.test.study.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 
+/**
+ * @author wlm
+ */
+
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
-    
+
 }
