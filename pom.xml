@@ -127,6 +127,12 @@
 			<version>29.0-jre</version>
 		</dependency>
 
+		<dependency>
+			<groupId>edu.uci.ics</groupId>
+			<artifactId>crawler4j</artifactId>
+			<version>4.4.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
