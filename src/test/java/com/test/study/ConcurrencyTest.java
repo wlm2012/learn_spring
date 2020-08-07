@@ -1,5 +1,6 @@
 package com.test.study;
 
+import com.test.study.util.concurrency.HashmapTest;
 import com.test.study.util.concurrency.NewBank;
 import org.junit.jupiter.api.Test;
 
@@ -27,5 +28,11 @@ public class ConcurrencyTest {
         }
         Thread.sleep(10000);
         newBank.printBalance();
+    }
+
+
+    @Test
+    public void hashmapTest(){
+        HashmapTest.hashmaptest();
     }
 }
