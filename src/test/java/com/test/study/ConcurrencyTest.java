@@ -1,5 +1,6 @@
 package com.test.study;
 
+import com.test.study.util.concurrency.BlockingQueueTest;
 import com.test.study.util.concurrency.HashmapTest;
 import com.test.study.util.concurrency.NewBank;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,12 @@ public class ConcurrencyTest {
 
 
     @Test
-    public void hashmapTest(){
+    public void hashmapTest() {
         HashmapTest.hashmaptest();
+    }
+
+    @Test
+    public void addBlockingQueue() throws InterruptedException {
+        BlockingQueueTest.addBlockingQueue();
     }
 }

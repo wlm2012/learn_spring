@@ -21,6 +21,7 @@ public class BlockingQueueTest {
     private static final int SEARCH_THREADS = 100;
     private static final Path DUMMY = Path.of("");
     private static BlockingQueue<Path> queue = new ArrayBlockingQueue<>(FILE_QUEUE_SIZE);
+    private static BlockingQueue<String> queueString = new ArrayBlockingQueue<>(FILE_QUEUE_SIZE);
 
     public static void main(String[] args) {
         try (var in = new Scanner(System.in)) {
@@ -84,6 +85,19 @@ public class BlockingQueueTest {
                     System.out.printf("%s:%d:%s%n", file, lineNumber, keyword);
                 }
             }
+        }
+    }
+
+
+    public static void addBlockingQueue() throws InterruptedException {
+        for (int i = 0; i < 100; i++) {
+            //Blocks if the queue is full
+            queueString.put(String.valueOf(i));
+        }
+
+        for (int i = 0; i < 100; i++) {
+            //Blocks if the queue is empty
+            System.out.println(queueString.take());
         }
     }
 
