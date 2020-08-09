@@ -21,4 +21,9 @@ public class Concurrency {
     public void ThreadLocalTest(){
         ThreadLocalTest.simpleDateFormatTest();
     }
+
+    @Test
+    public void updateMap(){
+        Atomic.updateMap();
+    }
 }

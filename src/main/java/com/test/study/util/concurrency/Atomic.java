@@ -1,6 +1,7 @@
 package com.test.study.util.concurrency;
 
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
@@ -68,5 +69,24 @@ public class Atomic {
         }
 
         System.out.println(adder.get());
+    }
+
+
+    public static void updateMap() {
+        ConcurrentHashMap<String, Long> map = new ConcurrentHashMap<>();
+        for (int i = 0; i < 10; i++) {
+            map.put(i + "", 1L);
+        }
+
+        map.compute("2", (k, v) -> v == null ? 1 : v + 1);
+
+        map.merge("2", 2L, Long::sum);
+
+        System.out.println(map.toString());
+
+        ConcurrentHashMap<String, LongAdder> map1 = new ConcurrentHashMap<>();
+        map1.computeIfAbsent("100", k -> new LongAdder()).increment();
+
+        System.out.println(map1.toString());
     }
 }
