@@ -88,5 +88,12 @@ public class Atomic {
         map1.computeIfAbsent("100", k -> new LongAdder()).increment();
 
         System.out.println(map1.toString());
+
+        ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
+        for (int i = 0; i < 100; i++) {
+            concurrentHashMap.put(i + "", i + "");
+        }
+
+        concurrentHashMap.reduceValues(1, v -> Integer.valueOf(v) > 50 ? 1 : null, Long::sum);
     }
 }
