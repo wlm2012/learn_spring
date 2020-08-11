@@ -17,6 +17,8 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.concurrent.CompletableFuture;
 
@@ -150,4 +152,15 @@ public class App {
         StreamTest.CollectorsStream();
     }
 
+
+    @Test
+    public void test02(){
+        DateTimeFormatter dtf=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        System.out.println(LocalDate.now().plusMonths(6).format(dtf));
+        LocalDate localDate=LocalDate.parse("2020-08-31",dtf);
+        System.out.println(localDate.plusMonths(6));
+        System.out.println(LocalDate.parse("2020-02-11",dtf).plusMonths(6).isBefore(LocalDate.now()));
+
+
+    }
 }
