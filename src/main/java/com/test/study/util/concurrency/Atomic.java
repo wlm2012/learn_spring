@@ -94,6 +94,7 @@ public class Atomic {
             concurrentHashMap.put(i + "", i + "");
         }
 
-        concurrentHashMap.reduceValues(1, v -> Integer.valueOf(v) > 50 ? 1 : null, Long::sum);
+        int result = concurrentHashMap.reduceValues(1, v -> Integer.valueOf(v) > 50 ? 1 : null, Integer::sum);
+        System.out.println(result);
     }
 }
