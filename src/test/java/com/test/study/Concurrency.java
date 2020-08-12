@@ -26,4 +26,10 @@ public class Concurrency {
     public void updateMap(){
         Atomic.updateMap();
     }
+
+    @Test
+    public void newKeySetTest(){
+        Atomic.newKeySetTest();
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.test.study.util.concurrency;
 
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -96,5 +97,17 @@ public class Atomic {
 
         int result = concurrentHashMap.reduceValues(1, v -> Integer.valueOf(v) > 50 ? 1 : null, Integer::sum);
         System.out.println(result);
+    }
+
+
+    public static void newKeySetTest() {
+        Set<String> set = ConcurrentHashMap.<String>newKeySet();
+        set.add("java");
+        System.out.println(set.toString());
+
+        ConcurrentHashMap<String,Long> map=new ConcurrentHashMap<>();
+        Set<String> words=map.keySet(2L);
+        words.add("c++");
+        System.out.println(words.toString());
     }
 }
