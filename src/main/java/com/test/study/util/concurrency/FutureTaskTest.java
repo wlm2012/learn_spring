@@ -10,20 +10,22 @@ public class FutureTaskTest {
         Callable<Integer> callable = () -> {
             System.out.println("111");
             int i = 0;
-            for (i = 0; i < 100_000; i++) {
-//                Thread.sleep(100);
+            for (i = 0; i < 100; i++) {
+                Thread.sleep(10);
             }
+            System.out.println("999");
             return i;
         };
         var futureTask = new FutureTask<Integer>(callable);
         var t = new Thread(futureTask);
         t.start();
-//        Thread.sleep(100);
-        System.out.println(futureTask.isDone());
-        System.out.println(futureTask.cancel(false));
-        System.out.println(futureTask.isDone());
-        System.out.println(futureTask.isCancelled());
-        System.out.println(futureTask.isDone());
+        Thread.sleep(500);
+        System.out.println("isDone()" + futureTask.isDone());
+        System.out.println("cancel()" + futureTask.cancel(false));
+        System.out.println("isDone()" + futureTask.isDone());
+        System.out.println("isCancelled()" + futureTask.isCancelled());
+        System.out.println("isDone()" + futureTask.isDone());
+        Thread.sleep(2000);
         System.out.println(futureTask.get());
     }
 }
