@@ -1,6 +1,7 @@
 package com.test.study;
 
 import com.test.study.util.concurrency.Atomic;
+import com.test.study.util.concurrency.ExecutorServiceTest;
 import com.test.study.util.concurrency.FutureTaskTest;
 import com.test.study.util.concurrency.ThreadLocalTest;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,12 @@ public class Concurrency {
     @Test
     public void futureTaskTest() throws ExecutionException, InterruptedException {
         FutureTaskTest.futureTest();
+    }
+
+
+    @Test
+    public void executorServiceTest() throws ExecutionException, InterruptedException {
+        ExecutorServiceTest.executorServiceTest();
     }
 
 }
