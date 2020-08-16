@@ -1,9 +1,6 @@
 package com.test.study;
 
-import com.test.study.util.concurrency.Atomic;
-import com.test.study.util.concurrency.ExecutorServiceTest;
-import com.test.study.util.concurrency.FutureTaskTest;
-import com.test.study.util.concurrency.ThreadLocalTest;
+import com.test.study.util.concurrency.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ExecutionException;
@@ -45,6 +42,12 @@ public class Concurrency {
     @Test
     public void executorServiceTest() throws ExecutionException, InterruptedException {
         ExecutorServiceTest.executorServiceTest();
+    }
+
+    @Test
+    public void ForkJoinTest(){
+        ForkJoinTest forkJoinTest=new ForkJoinTest();
+        forkJoinTest.test();
     }
 
 }
