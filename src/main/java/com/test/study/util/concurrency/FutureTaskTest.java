@@ -16,7 +16,7 @@ public class FutureTaskTest {
             System.out.println("999");
             return i;
         };
-        var futureTask = new FutureTask<Integer>(callable);
+        var futureTask = new FutureTask<>(callable);
         var t = new Thread(futureTask);
         t.start();
         Thread.sleep(500);
