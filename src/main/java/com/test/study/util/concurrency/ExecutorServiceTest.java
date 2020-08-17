@@ -45,8 +45,7 @@ public class ExecutorServiceTest {
         }
         Instant endTime = Instant.now();
         System.out.println("time:   " + Duration.between(startTime, endTime).toMillis() + "   total:   " + total);
-        System.out.println("pool size :    "+((ThreadPoolExecutor)executorService).getLargestPoolSize());
-
+        System.out.println("pool size :    " + ((ThreadPoolExecutor) executorService).getLargestPoolSize());
 
 
     }
