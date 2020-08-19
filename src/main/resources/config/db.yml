@@ -1,15 +1,15 @@
 spring:
   profiles: dev
-  datasource1:
+  datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://127.0.0.1:3306/study?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+    url: jdbc:mariadb://127.0.0.1:3306/test?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
     username: root
-    password: 14141215
-  datasource2:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://127.0.0.1:3306/study?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
-    username: root
-    password: 14141215
+    password: 123456
+#  datasource2:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://127.0.0.1:3306/study?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+#    username: root
+#    password: 123456
 
 ---
 spring:
@@ -23,4 +23,4 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://127.0.0.1:3306/study?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
     username: root
-    password: 14141215
+    password: 123456
