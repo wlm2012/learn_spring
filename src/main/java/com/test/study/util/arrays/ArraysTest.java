@@ -1,7 +1,6 @@
 package com.test.study.util.arrays;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ArraysTest {
 
@@ -16,7 +15,6 @@ public class ArraysTest {
     }
 
     /**
-     * 
      * list.add(int i,String a) i 不能大于实际数据量
      */
     public static void arrayAdd() {
@@ -27,5 +25,26 @@ public class ArraysTest {
         for (String s : list) {
             System.out.println(s);
         }
+    }
+
+    public static void AsList() {
+        String s = "aa,bb,cc";
+        HashSet<String> set = new HashSet<>();
+        set.addAll(Arrays.asList(s.split(",")));
+        System.out.println(set);
+
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("aaa", "aa");
+        map.put("bbb", "bb");
+        map.put("ccc", "cc");
+//        set.addAll(map);
+
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("aaa");
+        arrayList.add("bbb");
+        arrayList.add("ccc");
+        set.addAll(arrayList);
+        System.out.println(set);
     }
 }

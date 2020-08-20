@@ -1,5 +1,6 @@
 package com.test.study;
 
+import com.test.study.util.arrays.ArraysTest;
 import com.test.study.util.concurrency.*;
 import com.test.study.util.entity.Student;
 import com.test.study.util.guava.OptionalTest;
@@ -154,13 +155,18 @@ public class App {
 
 
     @Test
-    public void test02(){
-        DateTimeFormatter dtf=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public void test02() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         System.out.println(LocalDate.now().plusMonths(6).format(dtf));
-        LocalDate localDate=LocalDate.parse("2020-08-31",dtf);
+        LocalDate localDate = LocalDate.parse("2020-08-31", dtf);
         System.out.println(localDate.plusMonths(6));
-        System.out.println(LocalDate.parse("2020-02-11",dtf).plusMonths(6).isBefore(LocalDate.now()));
+        System.out.println(LocalDate.parse("2020-02-11", dtf).plusMonths(6).isBefore(LocalDate.now()));
 
 
+    }
+
+    @Test
+    public void arraysTest() {
+        ArraysTest.AsList();
     }
 }
