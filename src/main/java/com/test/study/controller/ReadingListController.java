@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("/read")
+@RequestMapping("/")
 public class ReadingListController {
 
     private ReadingListRepository readingListRepository;
