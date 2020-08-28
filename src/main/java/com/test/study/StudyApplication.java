@@ -18,17 +18,17 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class StudyApplication {
 
 
-	public static void main(String[] args) {
-		SpringApplication.run(StudyApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(StudyApplication.class, args);
+    }
 
 
-	@Bean
-	CommandLineRunner init(StorageService storageService) {
-		return (args) -> {
-			storageService.deleteAll();
-			storageService.init();
-		};
-	}
+    @Bean
+    CommandLineRunner init(StorageService storageService) {
+        return (args) -> {
+            storageService.deleteAll();
+            storageService.init();
+        };
+    }
 
 }
