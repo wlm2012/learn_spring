@@ -19,8 +19,8 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/study?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
     username: root
     password: 123456
-  datasource2:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://127.0.0.1:3306/study?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
-    username: root
-    password: 123456
+#  datasource2:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://127.0.0.1:3306/study?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+#    username: root
+#    password: 14141215
