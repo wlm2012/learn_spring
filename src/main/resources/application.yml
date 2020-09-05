@@ -60,6 +60,9 @@ logging:
   level:
     com.example.demo.mapper: debug
 
+entity:
+  time: 1000
+
 ---
 #数据库设置
 spring:
