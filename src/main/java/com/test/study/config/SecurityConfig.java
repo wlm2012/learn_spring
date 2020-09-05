@@ -25,10 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/").access("hasRole('READER')")
 				.antMatchers("/**").permitAll()
+				.antMatchers("/").permitAll()
 				.and()
 				.formLogin()
 				.loginPage("/login")
 				.failureUrl("/login?error=true");
+
+		http.csrf().disable();
 	}
 
 	@Override
