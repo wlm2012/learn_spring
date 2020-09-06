@@ -80,4 +80,4 @@ spring:
 ---
 #数据库设置
 spring:
-  profiles: test1
+  profiles: prod
