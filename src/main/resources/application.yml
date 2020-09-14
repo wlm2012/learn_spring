@@ -63,6 +63,20 @@ logging:
 entity:
   time: 1000
 
+
+#配置actuator，开启所有endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+
+
+
+
 ---
 #数据库设置
 spring:
