@@ -14,9 +14,9 @@ public class CountDownLatchTest {
             CountDownLatch countDownLatch = new CountDownLatch(2);
             executor.execute(() -> {
                 try {
+                    TimeUnit.SECONDS.sleep(5);
                     Instant now = Instant.now();
                     System.out.println("time= " + Duration.between(startTime, now).toSeconds());
-                    TimeUnit.SECONDS.sleep(5);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -25,9 +25,9 @@ public class CountDownLatchTest {
 
             executor.execute(() -> {
                 try {
+                    TimeUnit.SECONDS.sleep(3);
                     Instant now = Instant.now();
                     System.out.println("time= " + Duration.between(startTime, now).toSeconds());
-                    TimeUnit.SECONDS.sleep(3);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
