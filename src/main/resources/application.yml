@@ -12,7 +12,7 @@ spring:
       timeBetweenEvictionRunsMillis: 60000
       # 配置一个连接在池中最小生存的时间，单位是毫秒
       minEvictableIdleTimeMillis: 300000
-      validationQuery: SELECT 1 FROM DUAL
+      validationQuery: SELECT CURRENT SCHEMA FROM SYSIBM.SYSDUMMY1  #SELECT 1 FROM DUAL
       testWhileIdle: true
       testOnBorrow: false
       testOnReturn: false
@@ -81,8 +81,10 @@ management:
 #数据库设置
 spring:
   profiles: dev
-
-
+  datasource:
+    url: jdbc:db2://172.17.17.16:50000/proddb
+    username: qdgjj
+    password: qdzfzj
 
 
 ---
