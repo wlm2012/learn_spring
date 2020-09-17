@@ -19,6 +19,9 @@ public class BankAcctSetParmTest {
 	@RequestMapping("/BankAcctSetParmTest")
 	public BankAcctSetParm bankAcctSetParmTest() {
 		List<BankAcctSetParm> list = bankAcctSetParmRepository.findAll();
+		BankAcctSetParm bankAcctSetParm = list.get(0);
+		bankAcctSetParm.setRsv("12");
+		bankAcctSetParmRepository.save(bankAcctSetParm);
 		System.out.println(list.toString());
 		return list.get(0);
 	}
