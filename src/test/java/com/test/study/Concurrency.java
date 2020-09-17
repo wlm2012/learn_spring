@@ -50,4 +50,9 @@ public class Concurrency {
         forkJoinTest.test();
     }
 
+    @Test
+    public void countDownLatchTest() throws InterruptedException {
+        CountDownLatchTest.countDownLatchTest(10);
+    }
+
 }
