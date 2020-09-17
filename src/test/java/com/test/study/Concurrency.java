@@ -52,7 +52,7 @@ public class Concurrency {
 
     @Test
     public void countDownLatchTest() throws InterruptedException {
-        CountDownLatchTest.countDownLatchTest(10);
+        CountDownLatchTest.countDownLatchTest(5);
     }
 
 }
