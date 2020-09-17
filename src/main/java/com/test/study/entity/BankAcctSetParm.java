@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import java.sql.Date;
 
 @Data
+@Entity
 @Table(name = "T_BANK_ACCT_SET_PARM")
 public class BankAcctSetParm {
 
