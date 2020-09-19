@@ -60,4 +60,15 @@ public class Concurrency {
 		CyclicBarrierTest.cyclicBarrierTest(3);
 	}
 
+
+	@Test
+    public void futureTest1() throws ExecutionException, InterruptedException {
+        FutureTaskTest.futureTest1();
+    }
+
+	@Test
+	public void futureTest2() throws ExecutionException, InterruptedException {
+		FutureTaskTest.futureTaskTest();
+	}
+
 }
