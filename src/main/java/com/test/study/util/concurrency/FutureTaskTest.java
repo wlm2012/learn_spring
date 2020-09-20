@@ -1,5 +1,7 @@
 package com.test.study.util.concurrency;
 
+import lombok.Data;
+
 import java.sql.Time;
 import java.util.concurrent.*;
 
@@ -48,14 +50,14 @@ public class FutureTaskTest {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			result.id = 1;
-			result.name = "qwe";
+			result.setName("qwe");
 		}, result);
 
-		System.out.println(future1.get().name);
+		System.out.println(future1.get().getName());
 
 	}
 
+	@Data
 	class Result {
 		private int id;
 		private String name;
