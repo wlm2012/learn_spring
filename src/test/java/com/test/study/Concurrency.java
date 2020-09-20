@@ -71,4 +71,14 @@ public class Concurrency {
 		FutureTaskTest.futureTaskTest();
 	}
 
+	@Test
+	public void completedFutureTest() throws ExecutionException, InterruptedException {
+    	CompletedFutureTest.completedFutureTest();
+	}
+
+	@Test
+	public void exceptionallyTest() throws ExecutionException, InterruptedException {
+		CompletedFutureTest.exceptionally();
+	}
+
 }
