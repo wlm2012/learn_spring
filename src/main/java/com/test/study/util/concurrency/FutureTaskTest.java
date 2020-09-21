@@ -83,4 +83,15 @@ public class FutureTaskTest {
 		System.out.println(futureTask1.get());
 	}
 
+
+	public static void futureTest2() throws ExecutionException, InterruptedException {
+		ExecutorService service = Executors.newFixedThreadPool(10);
+
+		Future<Integer> future = service.submit(() -> {
+			return 7 / 0;
+		});
+
+		System.out.println(future.get());
+	}
+
 }
