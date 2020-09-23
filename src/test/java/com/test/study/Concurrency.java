@@ -86,4 +86,9 @@ public class Concurrency {
 		FutureTaskTest.futureTest2();
 	}
 
+	@Test
+	public void testCompletionService() throws ExecutionException, InterruptedException {
+		TestCompletionService.testCompletionService();
+	}
+
 }
