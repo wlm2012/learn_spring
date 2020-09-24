@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.*;
 
-public class TestCompletionService {
+public class CompletionServiceTest {
 
 	public static void testCompletionService() throws InterruptedException, ExecutionException {
 
@@ -15,13 +15,13 @@ public class TestCompletionService {
 		Instant startTime = Instant.now();
 
 
-		TestCallable testCallable = new TestCallable();
+		CallableTest testCallable = new CallableTest();
 		testCallable.setTime(0);
 		service.submit(testCallable);
-		TestCallable testCallable1 = new TestCallable();
+		CallableTest testCallable1 = new CallableTest();
 		testCallable1.setTime(3);
 		service.submit(testCallable1);
-		TestCallable testCallable2 = new TestCallable();
+		CallableTest testCallable2 = new CallableTest();
 		testCallable2.setTime(5);
 		service.submit(testCallable2);
 

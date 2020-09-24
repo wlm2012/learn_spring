@@ -3,7 +3,7 @@ package com.test.study.util.concurrency;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
-public class TestCallable implements Callable {
+public class CallableTest implements Callable {
 
 	private long time;
 

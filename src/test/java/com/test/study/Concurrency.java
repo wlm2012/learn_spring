@@ -88,7 +88,7 @@ public class Concurrency {
 
 	@Test
 	public void testCompletionService() throws ExecutionException, InterruptedException {
-		TestCompletionService.testCompletionService();
+		CompletionServiceTest.testCompletionService();
 	}
 
 }
