@@ -4,51 +4,52 @@ import com.test.study.util.concurrency.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class Concurrency {
 
-    @Test
-    public void atomic() {
-        Atomic.atomicTest();
-    }
+	@Test
+	public void atomic() {
+		Atomic.atomicTest();
+	}
 
-    @Test
-    public void longAccumulatorTest() {
-        Atomic.longAccumulatorTest();
-    }
-
-
-    @Test
-    public void ThreadLocalTest() {
-        ThreadLocalTest.simpleDateFormatTest();
-    }
-
-    @Test
-    public void updateMap() {
-        Atomic.updateMap();
-    }
-
-    @Test
-    public void newKeySetTest() {
-        Atomic.newKeySetTest();
-    }
-
-    @Test
-    public void futureTaskTest() throws ExecutionException, InterruptedException {
-        FutureTaskTest.futureTest();
-    }
+	@Test
+	public void longAccumulatorTest() {
+		Atomic.longAccumulatorTest();
+	}
 
 
-    @Test
-    public void executorServiceTest() throws ExecutionException, InterruptedException {
-        ExecutorServiceTest.executorServiceTest();
-    }
+	@Test
+	public void ThreadLocalTest() {
+		ThreadLocalTest.simpleDateFormatTest();
+	}
 
-    @Test
-    public void ForkJoinTest(){
-        ForkJoinTest forkJoinTest=new ForkJoinTest();
-        forkJoinTest.test();
-    }
+	@Test
+	public void updateMap() {
+		Atomic.updateMap();
+	}
+
+	@Test
+	public void newKeySetTest() {
+		Atomic.newKeySetTest();
+	}
+
+	@Test
+	public void futureTaskTest() throws ExecutionException, InterruptedException {
+		FutureTaskTest.futureTest();
+	}
+
+
+	@Test
+	public void executorServiceTest() throws ExecutionException, InterruptedException {
+		ExecutorServiceTest.executorServiceTest();
+	}
+
+	@Test
+	public void ForkJoinTest() {
+		ForkJoinTest forkJoinTest = new ForkJoinTest();
+		forkJoinTest.test();
+	}
 
 	@Test
 	public void countDownLatchTest() throws InterruptedException {
@@ -62,9 +63,9 @@ public class Concurrency {
 
 
 	@Test
-    public void futureTest1() throws ExecutionException, InterruptedException {
-        FutureTaskTest.futureTest1();
-    }
+	public void futureTest1() throws ExecutionException, InterruptedException {
+		FutureTaskTest.futureTest1();
+	}
 
 	@Test
 	public void futureTest2() throws ExecutionException, InterruptedException {
@@ -73,7 +74,7 @@ public class Concurrency {
 
 	@Test
 	public void completedFutureTest() throws ExecutionException, InterruptedException {
-    	CompletedFutureTest.completedFutureTest();
+		CompletedFutureTest.completedFutureTest();
 	}
 
 	@Test
@@ -89,6 +90,11 @@ public class Concurrency {
 	@Test
 	public void testCompletionService() throws ExecutionException, InterruptedException {
 		CompletionServiceTest.testCompletionService();
+	}
+
+	@Test
+	public void lockTest() throws InterruptedException, TimeoutException {
+		LockTest.fourthThread();
 	}
 
 }
