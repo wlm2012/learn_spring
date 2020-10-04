@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: test
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -12,7 +12,7 @@ spring:
       timeBetweenEvictionRunsMillis: 60000
       # 配置一个连接在池中最小生存的时间，单位是毫秒
       minEvictableIdleTimeMillis: 300000
-      validationQuery: SELECT CURRENT SCHEMA FROM SYSIBM.SYSDUMMY1  #SELECT 1 FROM DUAL
+      validationQuery: SELECT 1 FROM DUAL #SELECT CURRENT SCHEMA FROM SYSIBM.SYSDUMMY1
       testWhileIdle: true
       testOnBorrow: false
       testOnReturn: false
@@ -91,6 +91,10 @@ spring:
 #数据库设置
 spring:
   profiles: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: 123456
 
 
 ---
