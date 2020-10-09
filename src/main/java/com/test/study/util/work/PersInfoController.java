@@ -1,7 +1,9 @@
 package com.test.study.util.work;
 
 
+import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
+import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
