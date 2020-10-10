@@ -13,10 +13,13 @@ import java.sql.Date;
 @Table(name = "T_PERS_INFO_BAK")
 public class PersInfo {
 	@Id
-	private String grzh;
 	private String zjhm;
 	private String xingming;
 	private String bz;
+	private String beiz;
+	private String email;
+	private String mz;
+	private String lastUpdateTime;
 	private Date djrq;
 
 }

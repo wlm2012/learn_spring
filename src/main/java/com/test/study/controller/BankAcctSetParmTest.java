@@ -21,7 +21,7 @@ public class BankAcctSetParmTest {
 		List<BankAcctSetParm> list = bankAcctSetParmRepository.findAll();
 		BankAcctSetParm bankAcctSetParm = list.get(0);
 		bankAcctSetParm.setRsv("12");
-		bankAcctSetParmRepository.save(bankAcctSetParm);
+//		bankAcctSetParmRepository.save(bankAcctSetParm);
 		System.out.println(list.toString());
 		return list.get(0);
 	}
