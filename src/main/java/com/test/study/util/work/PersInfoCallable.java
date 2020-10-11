@@ -10,6 +10,8 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -83,7 +85,7 @@ public class PersInfoCallable implements Callable {
 
 
 	public String postWl(String name, String zjhm) {
-
+		Instant startTime = Instant.now();
 		String result = "-2";
 		// 设置超时时间
 		SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
@@ -127,6 +129,7 @@ public class PersInfoCallable implements Callable {
 			}
 		}
 		System.out.println(result + "    zjhm=" + zjhm + "   name=" + name);
+		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis()+ "    zjhm=" + zjhm+ "   name=" + name);
 		return result;
 	}
 }
