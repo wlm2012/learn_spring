@@ -21,5 +21,6 @@ public class PersInfo {
 	private String mz;
 	private String lastUpdateTime;
 	private Date djrq;
+	private String djgy;
 
 }
