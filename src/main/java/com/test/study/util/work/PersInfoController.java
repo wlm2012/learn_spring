@@ -3,7 +3,9 @@ package com.test.study.util.work;
 
 import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,6 +13,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -18,13 +24,15 @@ import java.util.concurrent.*;
 public class PersInfoController {
 
 
-	final static int capacity = 50;
+	final static int capacity = 100;
 
-	final static int core = 10;
 
-	final static LinkedBlockingQueue QUEUE = new LinkedBlockingQueue<>(capacity);
+	@Value(value = "${persCore}")
+	private int core;
 
-	final static ExecutorService executor = new ThreadPoolExecutor(core, core, 60, TimeUnit.SECONDS, QUEUE);
+	final LinkedBlockingQueue QUEUE = new LinkedBlockingQueue<>(capacity);
+
+	private ExecutorService executor = null;
 
 	private PersInfoRepository persInfoRepository;
 
@@ -44,9 +52,20 @@ public class PersInfoController {
 	}
 
 
-	//	@Scheduled(fixedRate = 5000)
-	@Scheduled(cron = "0/10 * 0,1,2,3,4,5,6,16,17,18,19,20,21,22,23 * * ? ")
+	//	@Scheduled(fixedRate = 10000)
+//	@Scheduled(cron = "0/10 * 0,1,2,3,4,5,16,17,18,19,20,21,22,23 * * ? ")
+	@Scheduled(cron = "${cron}")
 	public void PersInfo() throws InterruptedException, ExecutionException {
+
+/*		LocalDateTime localDateTime = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String now = localDateTime.format(dtf);
+		System.out.println(now);*/
+
+
+		if (executor == null) {
+			executor = new ThreadPoolExecutor(core, core, 60, TimeUnit.SECONDS, QUEUE);
+		}
 
 		CompletionService<String> service = new ExecutorCompletionService<>(executor);
 
@@ -66,6 +85,7 @@ public class PersInfoController {
 			persInfoList.remove(0);
 		}
 
+		System.out.println(((ThreadPoolExecutor) executor).getActiveCount());
 
 	}
 
@@ -86,6 +106,4 @@ public class PersInfoController {
 			persInfoList.remove(0);
 		}
 	}
-
-
 }

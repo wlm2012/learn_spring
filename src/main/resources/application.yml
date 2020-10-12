@@ -63,6 +63,13 @@ logging:
 entity:
   time: 1000
 
+server:
+  port: 10808
+
+persCore: 1
+
+cron: 0/10 * * * * ?
+
 
 #配置actuator，开启所有endpoints
 management:
