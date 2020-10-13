@@ -3,6 +3,7 @@ package com.test.study.util.work;
 
 import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
+import com.test.study.util.StringUtil.StringUtil;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,11 +14,14 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Time;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.*;
 
 @RestController
@@ -70,18 +74,13 @@ public class PersInfoController {
 		CompletionService<String> service = new ExecutorCompletionService<>(executor);
 
 		if (persInfoList == null || persInfoList.size() == 0) {
-			Pageable pageable = PageRequest.of(0, 50_0000);
+			Pageable pageable = PageRequest.of(0, 50_0);
 			persInfoList = persInfoRepository.findByBzOrderByDjrqDesc("-1", pageable);
 		}
 
 		for (int i = 0; i < capacity - QUEUE.size(); i++) {
 			PersInfoCallable callable = new PersInfoCallable(persInfoList.get(0), jdbcTemplate, persInfoRepository);
-//			System.out.println(persInfoList.get(0));
 			service.submit(callable);
-			Future future = service.poll();
-			if (future != null) {
-				System.out.println(future.get());
-			}
 			persInfoList.remove(0);
 		}
 
@@ -93,17 +92,28 @@ public class PersInfoController {
 	public void test() throws ExecutionException, InterruptedException {
 //		CompletionService<String> service = new ExecutorCompletionService<>(executor);
 
-		if (persInfoList == null || persInfoList.size() == 0) {
-			Pageable pageable = PageRequest.of(0, 50);
-			persInfoList = persInfoRepository.findByBzOrderByDjrqDesc("-1", pageable);
+		if (executor == null) {
+			executor = new ThreadPoolExecutor(core, core, 60, TimeUnit.SECONDS, QUEUE);
 		}
 
-		for (int i = 0; i < 6; i++) {
-			PersTestCalable callable = new PersTestCalable(persInfoList.get(0).getZjhm(), persInfoRepository);
-			Future future = executor.submit(callable);
-			System.out.println(persInfoList.get(0));
-			future.get();
-			persInfoList.remove(0);
+		if (persInfoList == null || persInfoList.size() == 0) {
+			Pageable pageable = PageRequest.of(0, 50_0000);
+			persInfoList = persInfoRepository.findByBzAndDjgyNotOrderByDjrqDesc("-1", "000000", pageable);
+		}
+
+		while (persInfoList.size() > 0) {
+			System.out.println(((ThreadPoolExecutor) executor).getActiveCount());
+			if (capacity - QUEUE.size() > 0) {
+				for (int i = 0; i < capacity - QUEUE.size(); i++) {
+					PersTestCalable callable = new PersTestCalable(persInfoList.get(0), jdbcTemplate, persInfoRepository);
+					executor.submit(callable);
+					persInfoList.remove(0);
+				}
+			}
+
 		}
 	}
+
+
 }
+

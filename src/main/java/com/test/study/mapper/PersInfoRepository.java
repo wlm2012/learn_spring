@@ -11,4 +11,6 @@ import java.util.List;
 public interface PersInfoRepository extends JpaRepository<PersInfo, String> {
 
 	List<PersInfo> findByBzOrderByDjrqDesc(String bz, Pageable pageable);
+
+	List<PersInfo> findByBzAndDjgyNotOrderByDjrqDesc(String bz, String djgy, Pageable pageable);
 }

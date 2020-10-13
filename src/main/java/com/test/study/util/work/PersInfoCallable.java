@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
+import com.test.study.util.StringUtil.StringUtil;
 import org.springframework.http.*;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -37,47 +38,34 @@ public class PersInfoCallable implements Callable {
 
 		String name = persInfo.getXingming();
 		String zjhm = persInfo.getZjhm();
-		String result = postWl(name, zjhm);
+		String beiz = persInfo.getBeiz();
+		String YZ_sfz = persInfo.getZjhm();
+		String YZ_xm = persInfo.getXingming();
 
 		LocalDateTime localDateTime = LocalDateTime.now();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		String now = localDateTime.format(dtf);
 
-		if (!"1".equals(result)) {
+		if (!StringUtil.isEmpty(beiz)) {
+			YZ_sfz += "," + persInfo.getBeiz();
+			YZ_xm += "," + persInfo.getEmail();
+		}
 
-			List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT NAME_MAN,NAME_WOMAN,OP_TYPE,CERT_NUM_MAN,CERT_NUM_WOMAN  FROM MZ_RC_MARRY_QD WHERE (CERT_NUM_MAN='" + zjhm + "' OR CERT_NUM_WOMAN='" + zjhm + "') ORDER BY OP_DATE DESC  FETCH FIRST 1 ROW ONLY");
-			if (list.size() > 0 && list.get(0).get("op_type").toString().contains("A")) {
-				String cert_num_man = list.get(0).get("cert_num_man").toString();
-				String cert1 = "";
-				String name1 = "";
-				if (zjhm.equals(cert_num_man)) {
-					cert1 = list.get(0).get("cert_num_woman").toString();
-					name1 = list.get(0).get("name_woman").toString();
-				} else {
-					cert1 = list.get(0).get("cert_num_man").toString();
-					name1 = list.get(0).get("name_man").toString();
-				}
-				result = postWl(name1, cert1);
-				Optional<PersInfo> woman = persInfoRepository.findById(cert1);
-				if (woman.isPresent()) {
-					PersInfo peiou = woman.get();
-					peiou.setBz(result);
-					peiou.setLastUpdateTime(now);
-					peiou.setBeiz(zjhm);
-					peiou.setEmail(name);
-					peiou.setDjgy("000000");
-					persInfoRepository.saveAndFlush(peiou);
-					System.out.println(peiou);
-				}
-				persInfo.setBeiz(cert1);
-				persInfo.setEmail(name1);
-				persInfo.setMz("00");
+		String result = postWl(YZ_xm, YZ_sfz);
+
+		if (!StringUtil.isEmpty(beiz)) {
+			Optional<PersInfo> woman = persInfoRepository.findById(persInfo.getBeiz());
+			if (woman.isPresent()) {
+				PersInfo peiou = woman.get();
+				peiou.setBz(result);
+				peiou.setLastUpdateTime(now);
+				persInfoRepository.saveAndFlush(peiou);
+				System.out.println(peiou);
 			}
 		}
 
 		persInfo.setBz(result);
 		persInfo.setLastUpdateTime(now);
-		persInfo.setDjgy("000000");
 		persInfoRepository.saveAndFlush(persInfo);
 		System.out.println(persInfo);
 		return null;
@@ -129,7 +117,7 @@ public class PersInfoCallable implements Callable {
 			}
 		}
 		System.out.println(result + "    zjhm=" + zjhm + "   name=" + name);
-		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis()+ "    zjhm=" + zjhm+ "   name=" + name);
+		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "    zjhm=" + zjhm + "   name=" + name);
 		return result;
 	}
 }
