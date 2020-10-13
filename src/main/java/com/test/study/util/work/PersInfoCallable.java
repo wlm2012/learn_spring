@@ -124,7 +124,7 @@ public class PersInfoCallable implements Callable {
 				}
 			}
 		}
-		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "result" + result + "    zjhm=" + zjhm + "   name=" + name);
+		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "    result = " + result + "    zjhm=" + zjhm + "   name=" + name);
 		return result;*/
 
 
@@ -140,7 +140,7 @@ public class PersInfoCallable implements Callable {
 				result = jsonObject.get("BODY").getAsJsonObject().get("result").getAsString();
 			}
 		}
-		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "result" + result + "    zjhm=" + zjhm + "   name=" + name);
+		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "    result = " + result + "    zjhm=" + zjhm + "   name=" + name);
 		return result;
 	}
 }
