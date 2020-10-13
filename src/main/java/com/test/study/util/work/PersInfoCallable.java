@@ -36,8 +36,6 @@ public class PersInfoCallable implements Callable {
 	@Override
 	public Object call() throws Exception {
 
-		String name = persInfo.getXingming();
-		String zjhm = persInfo.getZjhm();
 		String beiz = persInfo.getBeiz();
 		String YZ_sfz = persInfo.getZjhm();
 		String YZ_xm = persInfo.getXingming();

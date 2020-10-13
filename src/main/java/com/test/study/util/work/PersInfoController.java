@@ -74,7 +74,7 @@ public class PersInfoController {
 		CompletionService<String> service = new ExecutorCompletionService<>(executor);
 
 		if (persInfoList == null || persInfoList.size() == 0) {
-			Pageable pageable = PageRequest.of(0, 50_0);
+			Pageable pageable = PageRequest.of(0, 50_0000);
 			persInfoList = persInfoRepository.findByBzOrderByDjrqDesc("-1", pageable);
 		}
 
@@ -105,9 +105,12 @@ public class PersInfoController {
 			System.out.println(((ThreadPoolExecutor) executor).getActiveCount());
 			if (capacity - QUEUE.size() > 0) {
 				for (int i = 0; i < capacity - QUEUE.size(); i++) {
-					PersTestCalable callable = new PersTestCalable(persInfoList.get(0), jdbcTemplate, persInfoRepository);
-					executor.submit(callable);
-					persInfoList.remove(0);
+					if (persInfoList.size()>0){
+						PersTestCalable callable = new PersTestCalable(persInfoList.get(0), jdbcTemplate, persInfoRepository);
+						executor.submit(callable);
+						persInfoList.remove(0);
+					}
+
 				}
 			}
 
