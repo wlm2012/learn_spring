@@ -28,7 +28,7 @@ import java.util.concurrent.*;
 public class PersInfoController {
 
 
-	final static int capacity = 10000;
+	final static int capacity = 100;
 
 
 	@Value(value = "${persCore}")
@@ -58,7 +58,7 @@ public class PersInfoController {
 
 	//	@Scheduled(fixedRate = 10000)
 //	@Scheduled(cron = "0/10 * 0,1,2,3,4,5,16,17,18,19,20,21,22,23 * * ? ")
-//	@Scheduled(cron = "${cron}")
+	@Scheduled(cron = "${cron}")
 	public void PersInfo() throws InterruptedException, ExecutionException {
 
 /*		LocalDateTime localDateTime = LocalDateTime.now();
@@ -97,7 +97,7 @@ public class PersInfoController {
 		}
 
 		if (persInfoList == null || persInfoList.size() == 0) {
-			Pageable pageable = PageRequest.of(0, 160_0000);
+			Pageable pageable = PageRequest.of(0, 1600);
 			persInfoList = persInfoRepository.findByBzAndDjgyNotOrderByDjrqDesc("-1", "000000", pageable);
 		}
 
