@@ -98,11 +98,9 @@ public class PersInfoCallable implements Callable {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		// 组装body参数
 		HashMap<String, Object> map = new HashMap<>();
-		HashMap<String, Object> body = new HashMap();
-		HashMap<String, Object> ParamJson = new HashMap<>();
-		ParamJson.put("nameList", name);
-		ParamJson.put("cardNoList", zjhm);
-		body.put("ParamJson", ParamJson);
+		HashMap<String, String> body = new HashMap();
+		body.put("name", name);
+		body.put("cardno", zjhm);
 		map.put("BODY", body);
 
 		// 将map转为json串，放入restTemplate的参数对象中
@@ -111,7 +109,7 @@ public class PersInfoCallable implements Callable {
 		HttpEntity<String> request = new HttpEntity<>(JsonData, headers);
 
 		// 发起请求
-		String url = "http://172.16.234.24:12306/HttpServer/HTTP_RECIVECORE_SVR/OR003I0040";
+		String url = "http://172.16.234.24:12306/HttpServer/HTTP_RECIVECORE_SVR/OR007I0032";
 		ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, request, String.class);
 		if (HttpStatus.OK.equals(responseEntity.getStatusCode())) {
 			JsonObject jsonObject = gson.fromJson(responseEntity.getBody(), JsonObject.class);
@@ -119,11 +117,19 @@ public class PersInfoCallable implements Callable {
 					.getAsJsonObject().get("RET_CODE").getAsString();
 
 			if ("00000000".equals(RET_CODE)) {
-				result = jsonObject.get("BODY").getAsJsonObject().get("result").getAsString();
+				JsonElement houseid = jsonObject.get("BODY").getAsJsonObject().get("realownerList").getAsJsonArray().get(0)
+						.getAsJsonObject().get("houseid");
+				if (houseid.isJsonNull()) {
+					result = "0";
+					System.out.println("houseid" + "    zjhm=" + zjhm + "   name=" + name);
+				} else {
+					result = "1";
+					System.out.println(houseid + "    zjhm=" + zjhm + "   name=" + name);
+				}
 			}
 		}
 		System.out.println(result + "    zjhm=" + zjhm + "   name=" + name);
-		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "    zjhm=" + zjhm + "   name=" + name);
+		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis()+ "    zjhm=" + zjhm+ "   name=" + name);
 		return result;
 	}
 }
