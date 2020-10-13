@@ -82,11 +82,21 @@ public class PersInfoCallable implements Callable {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		// 组装body参数
+/*		// 组装body参数
 		HashMap<String, Object> map = new HashMap<>();
 		HashMap<String, String> body = new HashMap();
 		body.put("name", name);
 		body.put("cardno", zjhm);
+		map.put("BODY", body);*/
+
+
+		// 组装body参数
+		HashMap<String, Object> map = new HashMap<>();
+		HashMap<String, Object> body = new HashMap();
+		HashMap<String, Object> ParamJson = new HashMap<>();
+		ParamJson.put("nameList", name);
+		ParamJson.put("cardNoList", zjhm);
+		body.put("ParamJson", ParamJson);
 		map.put("BODY", body);
 
 		// 将map转为json串，放入restTemplate的参数对象中
@@ -94,7 +104,7 @@ public class PersInfoCallable implements Callable {
 		String JsonData = gson.toJson(map);
 		HttpEntity<String> request = new HttpEntity<>(JsonData, headers);
 
-		// 发起请求
+/*		// 发起请求
 		String url = "http://172.16.234.24:12306/HttpServer/HTTP_RECIVECORE_SVR/OR007I0032";
 		ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, request, String.class);
 		if (HttpStatus.OK.equals(responseEntity.getStatusCode())) {
@@ -112,6 +122,23 @@ public class PersInfoCallable implements Callable {
 					result = "1";
 					System.out.println(houseid + "    zjhm=" + zjhm + "   name=" + name);
 				}
+			}
+		}
+		System.out.println(result + "    zjhm=" + zjhm + "   name=" + name);
+		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "    zjhm=" + zjhm + "   name=" + name);
+		return result;*/
+
+
+		// 发起请求
+		String url = "http://172.16.234.24:12306/HttpServer/HTTP_RECIVECORE_SVR/OR003I0040";
+		ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, request, String.class);
+		if (HttpStatus.OK.equals(responseEntity.getStatusCode())) {
+			JsonObject jsonObject = gson.fromJson(responseEntity.getBody(), JsonObject.class);
+			String RET_CODE = jsonObject.get("SYS_HEAD").getAsJsonObject().get("TRAN_RET").getAsJsonArray().get(0)
+					.getAsJsonObject().get("RET_CODE").getAsString();
+
+			if ("00000000".equals(RET_CODE)) {
+				result = jsonObject.get("BODY").getAsJsonObject().get("result").getAsString();
 			}
 		}
 		System.out.println(result + "    zjhm=" + zjhm + "   name=" + name);
