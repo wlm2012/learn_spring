@@ -28,7 +28,7 @@ import java.util.concurrent.*;
 public class PersInfoController {
 
 
-	final static int capacity = 100;
+	final static int capacity = 10000;
 
 
 	@Value(value = "${persCore}")
@@ -58,7 +58,7 @@ public class PersInfoController {
 
 	//	@Scheduled(fixedRate = 10000)
 //	@Scheduled(cron = "0/10 * 0,1,2,3,4,5,16,17,18,19,20,21,22,23 * * ? ")
-	@Scheduled(cron = "${cron}")
+//	@Scheduled(cron = "${cron}")
 	public void PersInfo() throws InterruptedException, ExecutionException {
 
 /*		LocalDateTime localDateTime = LocalDateTime.now();
@@ -97,7 +97,7 @@ public class PersInfoController {
 		}
 
 		if (persInfoList == null || persInfoList.size() == 0) {
-			Pageable pageable = PageRequest.of(0, 50_0000);
+			Pageable pageable = PageRequest.of(0, 160_0000);
 			persInfoList = persInfoRepository.findByBzAndDjgyNotOrderByDjrqDesc("-1", "000000", pageable);
 		}
 
@@ -105,7 +105,7 @@ public class PersInfoController {
 			System.out.println(((ThreadPoolExecutor) executor).getActiveCount());
 			if (capacity - QUEUE.size() > 0) {
 				for (int i = 0; i < capacity - QUEUE.size(); i++) {
-					if (persInfoList.size()>0){
+					if (persInfoList.size() > 0) {
 						PersTestCalable callable = new PersTestCalable(persInfoList.get(0), jdbcTemplate, persInfoRepository);
 						executor.submit(callable);
 						persInfoList.remove(0);

@@ -50,15 +50,11 @@ public class PersTestCalable implements Callable {
 					peiou.setEmail(name);
 					peiou.setDjgy("000000");
 					persInfoRepository.saveAndFlush(peiou);
-//					System.out.println(peiou);
-
-					persInfo.setBeiz(cert1);
-					persInfo.setEmail(name1);
-					persInfo.setMz("00");
-//					System.out.println(persInfo);
 				}
-
 			}
+			persInfo.setBeiz(cert1);
+			persInfo.setEmail(name1);
+			persInfo.setMz("00");
 		}
 		persInfo.setDjgy("000000");
 		persInfoRepository.saveAndFlush(persInfo);
