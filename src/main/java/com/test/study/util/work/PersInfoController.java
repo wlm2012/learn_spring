@@ -3,8 +3,7 @@ package com.test.study.util.work;
 
 import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
-import com.test.study.util.StringUtil.StringUtil;
-import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
@@ -14,17 +13,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Time;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.*;
 
 @RestController
+@Slf4j
 public class PersInfoController {
 
 
@@ -117,6 +110,12 @@ public class PersInfoController {
 			}
 
 		}
+	}
+
+
+	@RequestMapping("/log")
+	public void logTest(){
+		log.info("log");
 	}
 
 

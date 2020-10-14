@@ -59,6 +59,8 @@ pagehelper:
 logging:
   level:
     com.example.demo.mapper: debug
+#  file:
+#    path: ./log
 
 entity:
   time: 1000
@@ -69,6 +71,7 @@ server:
 persCore: 1
 
 cron: 0/10 * * * * ?
+
 
 
 #配置actuator，开启所有endpoints

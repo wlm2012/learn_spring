@@ -1,7 +1,6 @@
 package com.test.study.util.work;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
@@ -15,8 +14,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.concurrent.Callable;
+import java.util.HashMap;
+import java.util.Optional;
 
 public class PersInfoCallable implements Runnable {
 
