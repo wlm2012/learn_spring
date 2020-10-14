@@ -36,6 +36,16 @@ public class PersInfoCallable implements Callable {
 	@Override
 	public Object call() throws Exception {
 
+
+		Optional<PersInfo> benren = persInfoRepository.findById(persInfo.getZjhm());
+		if (benren.isPresent()) {
+			persInfo = benren.get();
+		}
+		String bz = persInfo.getBz();
+		if ("1".equals(bz) || "0".equals(bz)) {
+			return null;
+		}
+
 		String beiz = persInfo.getBeiz();
 		String YZ_sfz = persInfo.getZjhm();
 		String YZ_xm = persInfo.getXingming();
