@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.Callable;
 
-public class PersInfoCallable implements Callable {
+public class PersInfoCallable implements Runnable {
 
 	private PersInfo persInfo;
 
@@ -34,7 +34,7 @@ public class PersInfoCallable implements Callable {
 	}
 
 	@Override
-	public Object call() throws Exception {
+	public void run() {
 
 
 		Optional<PersInfo> benren = persInfoRepository.findById(persInfo.getZjhm());
@@ -43,7 +43,7 @@ public class PersInfoCallable implements Callable {
 		}
 		String bz = persInfo.getBz();
 		if ("1".equals(bz) || "0".equals(bz)) {
-			return null;
+			return;
 		}
 
 		String beiz = persInfo.getBeiz();
@@ -76,7 +76,7 @@ public class PersInfoCallable implements Callable {
 		persInfo.setLastUpdateTime(now);
 		persInfoRepository.saveAndFlush(persInfo);
 		System.out.println(persInfo);
-		return null;
+		return;
 	}
 
 

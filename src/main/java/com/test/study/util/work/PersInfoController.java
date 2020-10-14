@@ -71,7 +71,7 @@ public class PersInfoController {
 			executor = new ThreadPoolExecutor(core, core, 60, TimeUnit.SECONDS, QUEUE);
 		}
 
-		CompletionService<String> service = new ExecutorCompletionService<>(executor);
+//		CompletionService<String> service = new ExecutorCompletionService<>(executor);
 
 		if (persInfoList == null || persInfoList.size() == 0) {
 			Pageable pageable = PageRequest.of(0, 50_0000);
@@ -79,9 +79,11 @@ public class PersInfoController {
 		}
 
 		for (int i = 0; i < capacity - QUEUE.size(); i++) {
-			PersInfoCallable callable = new PersInfoCallable(persInfoList.get(0), jdbcTemplate, persInfoRepository);
-			service.submit(callable);
-			persInfoList.remove(0);
+			if (persInfoList.size() > 0) {
+				PersInfoCallable callable = new PersInfoCallable(persInfoList.get(0), jdbcTemplate, persInfoRepository);
+				executor.execute(callable);
+				persInfoList.remove(0);
+			}
 		}
 
 		System.out.println(((ThreadPoolExecutor) executor).getActiveCount());
