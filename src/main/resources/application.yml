@@ -59,8 +59,8 @@ pagehelper:
 logging:
   level:
     com.example.demo.mapper: debug
-#  file:
-#    path: ./log
+  file:
+    path: ./log
 
 entity:
   time: 1000

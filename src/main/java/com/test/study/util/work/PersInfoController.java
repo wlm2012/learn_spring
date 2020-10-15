@@ -113,7 +113,7 @@ public class PersInfoController {
 	}
 
 
-	@RequestMapping("/log")
+	@RequestMapping("/log1")
 	public void logTest(){
 		log.info("log");
 	}

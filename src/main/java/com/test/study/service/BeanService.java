@@ -6,7 +6,7 @@ import com.test.study.entity.BookFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class BeanService {
 
 	@Bean
