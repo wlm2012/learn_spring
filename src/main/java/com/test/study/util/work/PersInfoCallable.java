@@ -63,7 +63,7 @@ public class PersInfoCallable implements Runnable {
 					peiou.setBz(result);
 					peiou.setLastUpdateTime(now);
 					persInfoRepository.saveAndFlush(peiou);
-					System.out.println(peiou);
+//					System.out.println(peiou);
 					log.info(peiou.toString());
 				}
 			}
@@ -76,7 +76,7 @@ public class PersInfoCallable implements Runnable {
 					peiou.setBz(result);
 					peiou.setLastUpdateTime(now);
 					persInfoRepository.saveAndFlush(peiou);
-					System.out.println(peiou);
+//					System.out.println(peiou);
 					log.info(peiou.toString());
 				}
 			}
@@ -85,7 +85,7 @@ public class PersInfoCallable implements Runnable {
 		persInfo.setBz(result);
 		persInfo.setLastUpdateTime(now);
 		persInfoRepository.saveAndFlush(persInfo);
-		System.out.println(persInfo);
+//		System.out.println(persInfo);
 		log.info(persInfo.toString());
 		return;
 	}
@@ -143,7 +143,7 @@ public class PersInfoCallable implements Runnable {
 				}
 			}
 		}
-		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "    result = " + result + "    zjhm=" + zjhm + "   name=" + name);
+//		System.out.println("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "    result = " + result + "    zjhm=" + zjhm + "   name=" + name);
 		log.info("time:   " + Duration.between(startTime, Instant.now()).toMillis() + "    result = " + result + "    zjhm=" + zjhm + "   name=" + name);
 		return result;
 
