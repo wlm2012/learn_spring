@@ -1,8 +1,9 @@
 package com.test.study;
 
 
-import com.test.study.springInAction.chapter1.autoconfig.CDPlayerConfig;
 import com.test.study.springInAction.chapter1.autoconfig.CompactDisc;
+import com.test.study.springInAction.chapter1.javaConfig.CDPlayer;
+import com.test.study.springInAction.chapter1.javaConfig.CDPlayerConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,25 @@ public class BeanTest {
 
 	private CompactDisc compactDisc;
 
+	private CDPlayer cdPlayer;
+
 	@Autowired
 	public void setCompactDisc(CompactDisc compactDisc) {
 		this.compactDisc = compactDisc;
 	}
 
+	@Autowired
+	public void setCdPlayer(CDPlayer cdPlayer) {
+		this.cdPlayer = cdPlayer;
+	}
+
 	@Test
 	public void cdTestNull() {
 		assertNotNull(compactDisc);
+	}
+
+	@Test
+	public void CDPlayNull() {
+		assertNotNull(cdPlayer);
 	}
 }
