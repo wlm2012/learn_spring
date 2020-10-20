@@ -4,6 +4,7 @@ package com.test.study.util.work;
 import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.CrosscuttingMembers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
@@ -29,7 +30,7 @@ public class PersInfoController {
 
 	final LinkedBlockingQueue QUEUE = new LinkedBlockingQueue<>(capacity);
 
-	private ExecutorService executor = null;
+	private ThreadPoolExecutor executor = null;
 
 	private PersInfoRepository persInfoRepository;
 
@@ -114,8 +115,28 @@ public class PersInfoController {
 
 
 	@RequestMapping("/log1")
-	public void logTest(){
+	public void logTest() {
 		log.info("log");
+	}
+
+
+	@RequestMapping("/core")
+	public void core(int num) {
+		executor.setCorePoolSize(num);
+		executor.setMaximumPoolSize(num);
+	}
+
+
+	@Scheduled(cron = "0 0 8 * * ?")
+	public void changeCore() {
+		executor.setCorePoolSize(1);
+		executor.setMaximumPoolSize(1);
+	}
+
+	@Scheduled(cron = "0 0 19 * * ?")
+	public void addCore() {
+		executor.setCorePoolSize(5);
+		executor.setMaximumPoolSize(5);
 	}
 
 
