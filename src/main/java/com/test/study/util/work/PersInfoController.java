@@ -51,7 +51,7 @@ public class PersInfoController {
 
 	//	@Scheduled(fixedRate = 10000)
 //	@Scheduled(cron = "0/10 * 0,1,2,3,4,5,16,17,18,19,20,21,22,23 * * ? ")
-//	@Scheduled(cron = "${cron}")
+	@Scheduled(cron = "${cron}")
 	public void PersInfo() throws InterruptedException, ExecutionException {
 
 /*		LocalDateTime localDateTime = LocalDateTime.now();
