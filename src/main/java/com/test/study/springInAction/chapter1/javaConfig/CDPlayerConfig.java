@@ -6,7 +6,7 @@ import com.test.study.springInAction.chapter1.autoconfig.SetPeppers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class CDPlayerConfig {
 
 	@Bean

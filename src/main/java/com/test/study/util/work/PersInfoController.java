@@ -4,7 +4,6 @@ package com.test.study.util.work;
 import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.CrosscuttingMembers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -27,6 +29,12 @@ public class PersInfoController {
 
 	@Value(value = "${persCore}")
 	private int core;
+
+	@Value(value = "${MaxCore}")
+	private int MaxCore;
+
+	@Value(value = "${MinCore}")
+	private int MinCore;
 
 	final LinkedBlockingQueue QUEUE = new LinkedBlockingQueue<>(capacity);
 
@@ -128,15 +136,15 @@ public class PersInfoController {
 
 
 	@Scheduled(cron = "0 0 8 * * ?")
-	public void changeCore() {
-		executor.setCorePoolSize(1);
-		executor.setMaximumPoolSize(1);
+	public void MinCore() {
+		executor.setCorePoolSize(MinCore);
+		executor.setMaximumPoolSize(MinCore);
 	}
 
 	@Scheduled(cron = "0 0 19 * * ?")
-	public void addCore() {
-		executor.setCorePoolSize(5);
-		executor.setMaximumPoolSize(5);
+	public void MaxCore() {
+		executor.setCorePoolSize(MaxCore);
+		executor.setMaximumPoolSize(MaxCore);
 	}
 
 

@@ -70,6 +70,10 @@ server:
 
 persCore: 1
 
+MaxCore: 3
+
+MinCore: 1
+
 cron: 0/10 * * * * ?
 
 
