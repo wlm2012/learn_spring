@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -123,8 +124,8 @@ public class PersInfoController {
 
 
 	@RequestMapping("/log1")
-	public void logTest() {
-		log.info("log");
+	public void logTest(@RequestParam String s) {
+		log.info("log==" +s);
 	}
 
 
