@@ -37,7 +37,7 @@ public class PersInfoController {
 	@Value(value = "${MinCore}")
 	private int MinCore;
 
-	final LinkedBlockingQueue QUEUE = new LinkedBlockingQueue<>(capacity);
+	final LinkedBlockingQueue<Runnable> QUEUE = new LinkedBlockingQueue<>(capacity);
 
 	private ThreadPoolExecutor executor = null;
 
