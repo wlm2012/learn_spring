@@ -4,6 +4,7 @@ package com.test.study.util.work;
 import com.test.study.entity.PersInfo;
 import com.test.study.mapper.PersInfoRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.query.criteria.internal.expression.function.AggregationFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
@@ -148,15 +149,25 @@ public class PersInfoController {
 
 	@Scheduled(cron = "0 0 8 * * ?")
 	public void MinCore() {
-		executor.setMaximumPoolSize(MinCore);
-		executor.setCorePoolSize(MinCore);
+		if (MinCore > executor.getCorePoolSize()) {
+			executor.setMaximumPoolSize(MinCore);
+			executor.setCorePoolSize(MinCore);
+		} else {
+			executor.setCorePoolSize(MinCore);
+			executor.setMaximumPoolSize(MinCore);
+		}
 
 	}
 
 	@Scheduled(cron = "0 0 19 * * ?")
 	public void MaxCore() {
-		executor.setMaximumPoolSize(MaxCore);
-		executor.setCorePoolSize(MaxCore);
+		if (MaxCore > executor.getCorePoolSize()) {
+			executor.setMaximumPoolSize(MaxCore);
+			executor.setCorePoolSize(MaxCore);
+		} else {
+			executor.setCorePoolSize(MaxCore);
+			executor.setMaximumPoolSize(MaxCore);
+		}
 
 	}
 
