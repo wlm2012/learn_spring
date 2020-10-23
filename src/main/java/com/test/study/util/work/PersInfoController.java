@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -64,11 +65,6 @@ public class PersInfoController {
 	@Scheduled(cron = "${cron}")
 	public void PersInfo() throws InterruptedException, ExecutionException {
 
-/*		LocalDateTime localDateTime = LocalDateTime.now();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		String now = localDateTime.format(dtf);
-		System.out.println(now);*/
-
 
 		if (executor == null) {
 			executor = new ThreadPoolExecutor(core, core, 60, TimeUnit.SECONDS, QUEUE);
@@ -77,7 +73,7 @@ public class PersInfoController {
 //		CompletionService<String> service = new ExecutorCompletionService<>(executor);
 
 		if (persInfoList == null || persInfoList.size() == 0) {
-			Pageable pageable = PageRequest.of(0, 50_0000);
+			Pageable pageable = PageRequest.of(0, 10_0000);
 			persInfoList = persInfoRepository.findByBzOrderByDjrqDesc("-1", pageable);
 		}
 
@@ -86,10 +82,13 @@ public class PersInfoController {
 				PersInfoCallable callable = new PersInfoCallable(persInfoList.get(0), jdbcTemplate, persInfoRepository);
 				executor.execute(callable);
 				persInfoList.remove(0);
+			} else {
+				Pageable pageable = PageRequest.of(0, 10_0000);
+				persInfoList = persInfoRepository.findByBzOrderByDjrqDesc("-1", pageable);
 			}
 		}
 
-		System.out.println(((ThreadPoolExecutor) executor).getActiveCount());
+		System.out.println(executor.getActiveCount());
 
 	}
 
@@ -124,28 +123,41 @@ public class PersInfoController {
 
 
 	@RequestMapping("/log1")
-	public void logTest(@RequestParam String s) {
-		log.info("log==" +s);
+	public void logTest(@RequestParam String num) {
+		System.out.println("num==" + num);
+		log.info("log==" + num);
 	}
 
 
 	@RequestMapping("/core")
 	public void core(int num) {
-		executor.setCorePoolSize(num);
-		executor.setMaximumPoolSize(num);
+		System.out.println(num);
+		System.out.println(executor.getCorePoolSize());
+
+		if (num > executor.getCorePoolSize()) {
+			executor.setMaximumPoolSize(num);
+			executor.setCorePoolSize(num);
+		} else {
+			executor.setCorePoolSize(num);
+			executor.setMaximumPoolSize(num);
+		}
+
+		System.out.println(executor.getCorePoolSize());
 	}
 
 
 	@Scheduled(cron = "0 0 8 * * ?")
 	public void MinCore() {
-		executor.setCorePoolSize(MinCore);
 		executor.setMaximumPoolSize(MinCore);
+		executor.setCorePoolSize(MinCore);
+
 	}
 
 	@Scheduled(cron = "0 0 19 * * ?")
 	public void MaxCore() {
-		executor.setCorePoolSize(MaxCore);
 		executor.setMaximumPoolSize(MaxCore);
+		executor.setCorePoolSize(MaxCore);
+
 	}
 
 

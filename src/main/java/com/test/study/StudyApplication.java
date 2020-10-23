@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @author wlm
  */
 @SpringBootApplication
-//@EnableScheduling
+@EnableScheduling
 @EnableConfigurationProperties(StorageProperties.class)
 public class StudyApplication {
 
