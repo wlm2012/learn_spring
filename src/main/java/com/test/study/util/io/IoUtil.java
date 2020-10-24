@@ -37,7 +37,7 @@ public class IoUtil {
     public static String readFile(String path) throws IOException {
         path = RepalceSeparator(path);
         File file = new File(path);
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         try (FileReader fReader = new FileReader(file)) {
             char[] buf = new char[1024 * 10];
             int temp = 0;
