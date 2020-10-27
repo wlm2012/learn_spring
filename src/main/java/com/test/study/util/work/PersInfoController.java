@@ -102,8 +102,9 @@ public class PersInfoController {
 		}
 
 		if (persInfoList == null || persInfoList.size() == 0) {
-			Pageable pageable = PageRequest.of(0, 1600);
-			persInfoList = persInfoRepository.findByBzAndDjgyNotOrderByDjrqDesc("-1", "000000", pageable);
+			Pageable pageable = PageRequest.of(0, 40_0000);
+			persInfoList = persInfoRepository.findByDjgyNotOrderByDjrqDesc("000000", pageable);
+			System.out.println(persInfoList.size());
 		}
 
 		while (persInfoList.size() > 0) {

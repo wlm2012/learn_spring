@@ -28,6 +28,10 @@ public class PersTestCalable implements Callable {
 
 	@Override
 	public Object call() {
+
+		if ("000000".equals(persInfo.getDjgy())) {
+			return null;
+		}
 		String name = persInfo.getXingming();
 		String zjhm = persInfo.getZjhm();
 		List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT NAME_MAN,NAME_WOMAN,OP_TYPE,CERT_NUM_MAN,CERT_NUM_WOMAN  FROM MZ_RC_MARRY_QD WHERE (CERT_NUM_MAN='" + zjhm + "' OR CERT_NUM_WOMAN='" + zjhm + "') ORDER BY OP_DATE DESC  FETCH FIRST 1 ROW ONLY");
