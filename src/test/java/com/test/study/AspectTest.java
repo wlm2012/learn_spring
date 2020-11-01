@@ -23,6 +23,6 @@ public class AspectTest {
 	@Test
 	public void Aspect() {
 //		Performance performance=new Performance();
-		performance.perform();
+		performance.getOut();
 	}
 }
