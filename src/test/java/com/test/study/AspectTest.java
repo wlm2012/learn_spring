@@ -24,5 +24,6 @@ public class AspectTest {
 	public void Aspect() {
 //		Performance performance=new Performance();
 		performance.getOut();
+		performance.perform(5);
 	}
 }

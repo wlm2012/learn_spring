@@ -10,19 +10,20 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class Audience {
 
-	@Pointcut("execution(* com.test.study.springInAction.chapter4.Performance.*(..)) ")
-	public void pointCut() {
+	@Pointcut("execution(* com.test.study.springInAction.chapter4.Performance.perform(int)) && args(num) ")
+	public void pointCut(int num) {
 	}
 
-	@Before("pointCut()")
-	public void silenceCellPhone() {
+	@Before("pointCut(num)")
+	public void silenceCellPhone(int num) {
 		System.out.println("silence CellPhone");
 	}
 
-	@Around("pointCut()")
-	public void watch(ProceedingJoinPoint pj) {
+	@Around("pointCut(num)")
+	public void watch(ProceedingJoinPoint pj,int num) {
 		try {
 			System.out.println("before");
+			System.out.println(num);
 			pj.proceed();
 			System.out.println("after");
 		} catch (Throwable throwable) {
