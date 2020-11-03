@@ -2,6 +2,7 @@ package com.test.study.springInAction.chapter5;
 
 
 import com.test.study.entity.Teacher;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,7 +19,10 @@ public class PostTest {
 	}
 
 	@RequestMapping(value = "/httpTest", method = RequestMethod.POST)
-	public void httpTest(@Valid @RequestBody Teacher teacher) {
+	public void httpTest(@Valid @RequestBody Teacher teacher, Errors errors) {
+		if (errors.hasErrors()) {
+			System.out.println("wrong");
+		}
 		System.out.println(teacher);
 	}
 }
