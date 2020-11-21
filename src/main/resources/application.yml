@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: test
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    druid:
@@ -106,9 +106,10 @@ spring:
 spring:
   profiles: test
   datasource:
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://localhost:3306/study?serverTimezone=Etc/GMT-8
     username: root
     password: 123456
+
 
 
 ---

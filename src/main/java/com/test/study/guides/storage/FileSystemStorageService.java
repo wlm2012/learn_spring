@@ -21,7 +21,7 @@ import java.util.stream.Stream;
  * @author wlm
  */
 
-@Service
+//@Service
 public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;

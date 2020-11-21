@@ -1,0 +1,30 @@
+
+
+CREATE TABLE `t_pers_info` (
+  `GRZH` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '个人账号',
+  `XINGMING` varchar(120) NOT NULL,
+  `XMQP` varchar(255) NOT NULL,
+  `XINGBIE` char(1) DEFAULT NULL,
+  `GDDHHM` char(20) DEFAULT NULL,
+  `SJHM` char(11) NOT NULL,
+  `ZJLX` char(2) NOT NULL,
+  `ZJHM` char(18) NOT NULL,
+  `CSNY` char(7) DEFAULT NULL,
+  `HYZK` char(2) DEFAULT NULL,
+  `ZHIYE` char(2) DEFAULT NULL,
+  `ZHICHEN` char(3) DEFAULT NULL,
+  `ZHIWU` char(4) DEFAULT NULL,
+  `XUELI` char(3) DEFAULT NULL,
+  `YZBM` char(6) DEFAULT NULL,
+  `JTZZ` varchar(255) DEFAULT NULL,
+  `JTYSR` decimal(18,2) DEFAULT NULL,
+  `CSRQ` date DEFAULT NULL,
+  `EMAIL` varchar(120) DEFAULT NULL,
+  `MZ` char(2) DEFAULT NULL,
+  `BEIZ` varchar(255) DEFAULT NULL,
+  `DJRQ` date DEFAULT NULL,
+  `DJGY` char(20) DEFAULT NULL,
+  `KHJG` char(12) DEFAULT NULL,
+  `LAST_UPDATE_TIME` varchar(26) DEFAULT NULL,
+  PRIMARY KEY (`GRZH`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

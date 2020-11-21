@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * @author wlm
  */
 
-@Controller
+//@Controller
 public class FileUploadController {
 
     private final StorageService storageService;
