@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
-import java.sql.Date;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -24,6 +23,14 @@ public class JdbcTPresInfoRepository {
 
 	public Iterable<TPersInfo> findAll() {
 		return jdbc.query("select * from t_pers_info", this::mapRowTPersInfo);
+	}
+
+	public TPersInfo findOne(String grzh) {
+		return jdbc.queryForObject("select * from t_pers_info where grzh = ?", this::mapRowTPersInfo);
+	}
+
+	public void insertTPersInfo(TPersInfo tPersInfo) {
+		jdbc.update("INSERT INTO t_pers_info (`GRZH`, `XINGMING` ) VALUES(?,?)", tPersInfo.getGrzh(), tPersInfo.getXingming());
 	}
 
 
@@ -58,8 +65,4 @@ public class JdbcTPresInfoRepository {
 		);
 	}
 
-
-	private String djgy;
-	private String khjg;
-	private String lastUpdateTime;
 }
