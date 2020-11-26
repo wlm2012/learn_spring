@@ -26,7 +26,7 @@ public class JdbcTPresInfoRepository {
 	}
 
 	public TPersInfo findOne(String grzh) {
-		return jdbc.queryForObject("select * from t_pers_info where grzh = ?", this::mapRowTPersInfo);
+		return jdbc.queryForObject("select * from t_pers_info where grzh = ?", this::mapRowTPersInfo, grzh);
 	}
 
 	public void insertTPersInfo(TPersInfo tPersInfo) {
@@ -60,7 +60,7 @@ public class JdbcTPresInfoRepository {
 				resultSet.getDate("djrq"),
 				resultSet.getString("djgy"),
 				resultSet.getString("khjg"),
-				resultSet.getString("lastUpdateTime")
+				resultSet.getString("last_update_time")
 
 		);
 	}

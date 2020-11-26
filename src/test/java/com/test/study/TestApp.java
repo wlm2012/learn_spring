@@ -1,9 +1,6 @@
 package com.test.study;
 
-import com.google.common.base.Optional;
 import com.test.study.util.arrays.ListTest;
-
-import org.hibernate.annotations.CollectionId;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
