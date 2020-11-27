@@ -2,6 +2,7 @@ package com.test.study;
 
 
 import com.test.study.springInAction.chapter4.ConcertConfig;
+import com.test.study.springInAction.chapter4.Master;
 import com.test.study.springInAction.chapter4.Performance;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,8 +23,16 @@ public class AspectTest {
 
 	@Test
 	public void Aspect() {
-//		Performance performance=new Performance();
+
 		performance.getOut();
 		performance.perform(5);
 	}
+
+	@Test
+	public void AspectNo() {
+		Performance performance1=new Master();
+		performance1.getOut();
+		performance1.perform(5);
+	}
+
 }
