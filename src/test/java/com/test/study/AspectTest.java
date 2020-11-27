@@ -30,7 +30,7 @@ public class AspectTest {
 
 	@Test
 	public void AspectNo() {
-		Performance performance1=new Master();
+		Performance performance1 = new Master();
 		performance1.getOut();
 		performance1.perform(5);
 	}
