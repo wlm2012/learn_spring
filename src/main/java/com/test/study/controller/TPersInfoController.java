@@ -1,10 +1,8 @@
 package com.test.study.controller;
 
 
-import com.test.study.entity.PersInfo;
 import com.test.study.entity.TPersInfo;
-import com.test.study.mapper.PersInfoRepository;
-import com.test.study.mapper.TPersInfoRepository;
+import com.test.study.primaryMapper.TPersInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

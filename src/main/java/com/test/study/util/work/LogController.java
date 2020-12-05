@@ -2,7 +2,7 @@ package com.test.study.util.work;
 
 
 import com.test.study.entity.PersInfo;
-import com.test.study.mapper.PersInfoRepository;
+import com.test.study.primaryMapper.PersInfoRepository;
 import com.test.study.util.io.IoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

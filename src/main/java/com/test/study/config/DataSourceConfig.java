@@ -31,20 +31,21 @@ public class DataSourceConfig {
 	}
 
 
-/*	@Bean
-	@Resource
-	@Primary
-	public PlatformTransactionManager primaryPlatformTransactionManager() {
-		return new DataSourceTransactionManager(primaryDataSource());
-	}*/
-
 	@Bean
 	@Resource
 	@Primary
-	@Qualifier("transactionManager")
-	public TransactionManager primaryTransactionManager() {
+//	@Qualifier("transactionManager")
+	public PlatformTransactionManager primaryPlatformTransactionManager() {
 		return new DataSourceTransactionManager(primaryDataSource());
 	}
+
+/*	@Bean
+	@Resource
+	@Primary
+//	@Qualifier("transactionManager")
+	public TransactionManager primaryTransactionManager() {
+		return new DataSourceTransactionManager(primaryDataSource());
+	}*/
 
 	@Bean
 	@Primary

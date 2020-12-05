@@ -119,7 +119,10 @@ spring:
       jdbc-url: jdbc:db2://172.17.17.16:50000/proddb
       username: qdgjj
       password: qdzfzj
-
+  jpa:
+    show-sql: false
+    hibernate:
+      format_sql: true
 
 
 

@@ -1,6 +1,5 @@
-package com.test.study.mapper;
+package com.test.study.primaryMapper;
 
-import com.test.study.entity.BankAcctSetParm;
 import com.test.study.entity.InitBasicAttData;
 import org.springframework.data.jpa.repository.JpaRepository;
 

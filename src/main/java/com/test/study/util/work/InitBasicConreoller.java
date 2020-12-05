@@ -2,14 +2,13 @@ package com.test.study.util.work;
 
 
 import com.test.study.entity.InitBasicAttData;
-import com.test.study.mapper.InitBasicAttDataRepository;
+import com.test.study.primaryMapper.InitBasicAttDataRepository;
 import com.test.study.util.StringUtil.StringUtil;
 import com.test.study.util.io.IoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.text.StyledEditorKit;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;

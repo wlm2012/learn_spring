@@ -2,8 +2,7 @@ package com.test.study.controller;
 
 
 import com.test.study.entity.Book;
-import com.test.study.entity.Reader;
-import com.test.study.mapper.ReadingListRepository;
+import com.test.study.primaryMapper.ReadingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

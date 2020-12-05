@@ -1,7 +1,7 @@
 package com.test.study.config;
 
 
-import com.test.study.mapper.ReaderRepository;
+import com.test.study.primaryMapper.ReaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

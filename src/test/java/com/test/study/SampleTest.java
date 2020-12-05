@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.github.pagehelper.PageHelper;
 import com.test.study.entity.User;
-import com.test.study.mapper.UserMapper;
+import com.test.study.primaryMapper.UserMapper;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
