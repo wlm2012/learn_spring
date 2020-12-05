@@ -2,7 +2,9 @@ package com.test.study.controller;
 
 
 import com.test.study.entity.PersInfo;
+import com.test.study.entity.TPersInfo;
 import com.test.study.mapper.PersInfoRepository;
+import com.test.study.mapper.TPersInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,17 +16,17 @@ import java.util.Optional;
 public class TPersInfoController {
 
 
-	private PersInfoRepository persInfoRepository;
+	private TPersInfoRepository persInfoRepository;
 
 	@Autowired
-	public void setRepository(PersInfoRepository repository) {
+	public void setRepository(TPersInfoRepository repository) {
 		persInfoRepository = repository;
 	}
 
 
-	@RequestMapping("/TPersInfo/{zjhm}")
-	public PersInfo tPersInfo(@PathVariable String zjhm) {
-		Optional<PersInfo> persInfo = persInfoRepository.findById(zjhm);
+	@RequestMapping("/TPersInfo/{grzh}")
+	public TPersInfo tPersInfo(@PathVariable String grzh) {
+		Optional<TPersInfo> persInfo = persInfoRepository.findById(grzh);
 		if (persInfo.isPresent()) {
 			return persInfo.get();
 		}
