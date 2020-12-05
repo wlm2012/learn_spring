@@ -2,6 +2,7 @@ package com.test.study.config;
 
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionManager;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -29,10 +31,18 @@ public class DataSourceConfig {
 	}
 
 
+/*	@Bean
+	@Resource
+	@Primary
+	public PlatformTransactionManager primaryPlatformTransactionManager() {
+		return new DataSourceTransactionManager(primaryDataSource());
+	}*/
+
 	@Bean
 	@Resource
 	@Primary
-	public PlatformTransactionManager primaryTransactionManager() {
+	@Qualifier("transactionManager")
+	public TransactionManager primaryTransactionManager() {
 		return new DataSourceTransactionManager(primaryDataSource());
 	}
 
