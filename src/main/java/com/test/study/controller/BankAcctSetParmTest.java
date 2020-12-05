@@ -25,4 +25,9 @@ public class BankAcctSetParmTest {
 		System.out.println(list.toString());
 		return list.get(0);
 	}
+
+	@RequestMapping("/BankAcctSetParm")
+	public List<BankAcctSetParm> bankAcctSetParmList() {
+		return bankAcctSetParmRepository.findAll();
+	}
 }

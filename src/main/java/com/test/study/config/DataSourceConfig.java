@@ -1,14 +1,13 @@
 package com.test.study.config;
 
 
-import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.JpaRepositoryConfigExtension;
-import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
-import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -21,28 +20,46 @@ import javax.sql.DataSource;
 public class DataSourceConfig {
 
 
-	@ConfigurationProperties("mysql.datasource")
+	@ConfigurationProperties("spring.datasource.primary")
 	@Bean
-	public DataSourceProperties dataSourceProperties() {
-		return new DataSourceProperties();
+	@Primary
+	public DataSource primaryDataSource() {
+		DataSource dataSource= DataSourceBuilder.create().type(HikariDataSource.class).build();
+		return dataSource;
+	}
+
+
+	@Bean
+	@Resource
+	@Primary
+	public PlatformTransactionManager primaryTransactionManager() {
+		return new DataSourceTransactionManager(primaryDataSource());
 	}
 
 	@Bean
-	public DataSource dataSource() {
-		DataSourceProperties dataSourceProperties = dataSourceProperties();
-		return dataSourceProperties.initializeDataSourceBuilder().build();
+	@Primary
+	@Resource
+	public JdbcTemplate primaryJdbcTemplate() {
+		return new JdbcTemplate(primaryDataSource());
+	}
+
+
+	@ConfigurationProperties("spring.datasource.second")
+	@Bean
+	public DataSource secondDataSource() {
+		return DataSourceBuilder.create().type(HikariDataSource.class).build();
 	}
 
 	@Bean
 	@Resource
-	public PlatformTransactionManager transactionManager() {
-		return new DataSourceTransactionManager(dataSource());
+	public PlatformTransactionManager secondTransactionManager() {
+		return new DataSourceTransactionManager(secondDataSource());
 	}
 
-
 	@Bean
-	public JdbcTemplate jdbcTemplate() {
-		return new JdbcTemplate(dataSource());
+	@Resource
+	public JdbcTemplate secondJdbcTemplate() {
+		return new JdbcTemplate(secondDataSource());
 	}
 
 }
