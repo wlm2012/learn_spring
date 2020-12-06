@@ -64,7 +64,6 @@ public class PrimaryConfig {
 
 	private Map<String, String> getVendorProperties() {
 		Map<String, String> jpaProperties = new HashMap<>(16);
-		jpaProperties.put("hibernate.hbm2ddl.auto", "update");
 		jpaProperties.put("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
 		jpaProperties.put("hibernate.format_sql", env.getProperty("spring.jpa.hibernate.format_sql"));
 		jpaProperties.put("hibernate.hbm2ddl.auto",env.getProperty("spring.jpa.hibernate.ddl-auto"));

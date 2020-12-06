@@ -3,6 +3,7 @@ package com.test.study.controller;
 
 import com.test.study.entity.TPersInfo;
 import com.test.study.primaryMapper.TPersInfoRepository;
+import com.test.study.secondMapper.SecondPersInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,16 +20,29 @@ public class TPersInfoController {
 
 	private TPersInfoRepository persInfoRepository;
 
+	private SecondPersInfoRepository secondPersInfoRepository;
+
+	@Autowired
+	public void setSecondPersInfoRepository(SecondPersInfoRepository repository) {
+		secondPersInfoRepository = repository;
+	}
+
 	@Autowired
 	public void setRepository(TPersInfoRepository repository) {
 		persInfoRepository = repository;
 	}
 
 
-	@RequestMapping("/TPersInfo/{grzh}")
+	@RequestMapping("/TPersInfo/{grzh}/{datasouce}")
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public TPersInfo tPersInfo(@PathVariable String grzh) {
-		Optional<TPersInfo> persInfo = persInfoRepository.findById(grzh);
+	public TPersInfo tPersInfo(@PathVariable String grzh, @PathVariable int datasouce) {
+		Optional<TPersInfo> persInfo = null;
+		if (1 == datasouce) {
+			persInfo = persInfoRepository.findById(grzh);
+		} else {
+			persInfo = secondPersInfoRepository.findById(grzh);
+		}
+
 		if (persInfo.isPresent()) {
 			return persInfo.get();
 		}
