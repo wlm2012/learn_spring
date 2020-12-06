@@ -120,9 +120,10 @@ spring:
       username: qdgjj
       password: qdzfzj
   jpa:
-    show-sql: false
+    show-sql: true
     hibernate:
       format_sql: true
+      ddl-auto: none
 
 
 

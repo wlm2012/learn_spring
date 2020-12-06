@@ -18,15 +18,16 @@ import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-		entityManagerFactoryRef = "primaryEntityManagerFactory",
-		transactionManagerRef = "primaryTransactionManager",
-		basePackages = {"com.test.study.primaryMapper"}
+		entityManagerFactoryRef = "secondEntityManagerFactory",
+		transactionManagerRef = "secondTransactionManager",
+		basePackages = {"com.test.study.secondMapper"}
 )
-public class PrimaryConfig {
+public class secondConfig {
 
 
 	private Environment env;
@@ -39,25 +40,25 @@ public class PrimaryConfig {
 	}
 
 	@Autowired
-	@Qualifier("primaryDataSource")
+	@Qualifier("secondDataSource")
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 
 	@Primary
-	@Bean(name = "primaryEntityManager")
+	@Bean(name = "secondEntityManager")
 	public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-		return primaryEntityManagerFactory(builder).getObject().createEntityManager();
+		return Objects.requireNonNull(secondEntityManagerFactory(builder).getObject()).createEntityManager();
 	}
 
 	@Primary
-	@Bean(name = "primaryEntityManagerFactory")
-	public LocalContainerEntityManagerFactoryBean primaryEntityManagerFactory(EntityManagerFactoryBuilder builder) {
+	@Bean(name = "secondEntityManagerFactory")
+	public LocalContainerEntityManagerFactoryBean secondEntityManagerFactory(EntityManagerFactoryBuilder builder) {
 		return builder
 				.dataSource(dataSource)
 				.properties(getVendorProperties())
 				.packages("com.test.study.entity")
-				.persistenceUnit("primaryPersistenceUnit")
+				.persistenceUnit("secondPersistenceUnit")
 				.build();
 	}
 
@@ -74,9 +75,9 @@ public class PrimaryConfig {
 	}
 
 	@Primary
-	@Bean(name = "primaryTransactionManager")
-	public PlatformTransactionManager primaryTransactionManager(EntityManagerFactoryBuilder builder) {
-		return new JpaTransactionManager(primaryEntityManagerFactory(builder).getObject());
+	@Bean(name = "secondTransactionManager")
+	public PlatformTransactionManager secondTransactionManager(EntityManagerFactoryBuilder builder) {
+		return new JpaTransactionManager(Objects.requireNonNull(secondEntityManagerFactory(builder).getObject()));
 	}
 }
 

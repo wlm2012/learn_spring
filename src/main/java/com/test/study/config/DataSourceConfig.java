@@ -33,7 +33,7 @@ public class DataSourceConfig {
 
 	@Bean
 	@Resource
-	@Primary
+//	@Primary
 	public PlatformTransactionManager primaryPlatformTransactionManager() {
 		return new DataSourceTransactionManager(primaryDataSource());
 	}
@@ -56,7 +56,7 @@ public class DataSourceConfig {
 
 	@Bean
 	@Resource
-	public PlatformTransactionManager secondTransactionManager() {
+	public PlatformTransactionManager secondPlatformTransactionManager() {
 		return new DataSourceTransactionManager(secondDataSource());
 	}
 

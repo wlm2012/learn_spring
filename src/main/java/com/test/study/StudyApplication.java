@@ -16,7 +16,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 /**
  * @author wlm
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, JdbcTemplateAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, JdbcTemplateAutoConfiguration.class,
+JpaRepositoriesAutoConfiguration.class})
 //@EnableScheduling
 //@EnableConfigurationProperties(StorageProperties.class)
 public class StudyApplication {

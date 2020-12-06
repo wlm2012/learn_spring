@@ -43,6 +43,6 @@ public class TPersInfo {
 	private Date djrq;
 	private String djgy;
 	private String khjg;
-	private String lastUpdateTime;
+	private String last_update_time;
 
 }
