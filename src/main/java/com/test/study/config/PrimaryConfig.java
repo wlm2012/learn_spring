@@ -52,15 +52,14 @@ public class PrimaryConfig {
 
 	@Primary
 	@Bean(name = "entityManagerFactoryPrimary")
-	public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary (EntityManagerFactoryBuilder builder) {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
 		return builder
 				.dataSource(dataSource)
 				.properties(getVendorProperties())
-				.packages("xin.zhuyao.springbootjapdatasource.domain.primary")
+				.packages("com.test.study.entity")
 				.persistenceUnit("primaryPersistenceUnit")
 				.build();
 	}
-
 
 
 	private Map<String, String> getVendorProperties() {
@@ -68,7 +67,7 @@ public class PrimaryConfig {
 		jpaProperties.put("hibernate.hbm2ddl.auto", "update");
 		jpaProperties.put("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
 		jpaProperties.put("hibernate.format_sql", env.getProperty("spring.jpa.hibernate.format_sql"));
-		jpaProperties.put("hibernate.dialect", env.getProperty("spring.jpa.hibernate.primary-dialect"));
+//		jpaProperties.put("hibernate.dialect", env.getProperty("spring.jpa.hibernate.primary-dialect"));
 		jpaProperties.put("hibernate.current_session_context_class", "org.springframework.orm.hibernate5.SpringSessionContext");
 		return jpaProperties;
 	}
