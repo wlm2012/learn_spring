@@ -72,4 +72,18 @@ public class TPersInfoController {
 
 		persInfoRepository.save(tPersInfo);
 	}
+
+	@RequestMapping("/SavePers1/{grzh}/{xingbie}")
+	@Transactional("secondTransactionManager")
+	public void second(@PathVariable String grzh, @PathVariable String xingbie, @RequestBody TPersInfo tPersInfo) {
+		Optional<TPersInfo> persInfo = secondPersInfoRepository.findById(grzh);
+		if (persInfo.isPresent()) {
+			TPersInfo persInfo1 = persInfo.get();
+			persInfo1.setXingbie(xingbie);
+			secondPersInfoRepository.save(persInfo1);
+		}
+
+		secondPersInfoRepository.save(tPersInfo);
+	}
+
 }
