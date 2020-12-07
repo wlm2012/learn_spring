@@ -26,7 +26,7 @@ import java.util.Map;
 		transactionManagerRef = "primaryTransactionManager",
 		basePackages = {"com.test.study.primaryMapper"}
 )
-public class PrimaryConfig {
+public class PrimaryJPAConfig {
 
 
 	private Environment env;

@@ -27,7 +27,7 @@ import java.util.Objects;
 		transactionManagerRef = "secondTransactionManager",
 		basePackages = {"com.test.study.secondMapper"}
 )
-public class secondConfig {
+public class SecondJPAConfig {
 
 
 	private Environment env;
