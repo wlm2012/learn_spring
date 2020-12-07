@@ -1,8 +1,6 @@
 package com.test.study.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -16,20 +14,23 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
+/**
+ * @author wlm
+ */
 @Configuration
-@MapperScan(basePackages = "com.test.study.primaryMapper", sqlSessionFactoryRef = "mainSqlSessionFactory")
+@MapperScan(basePackages = "com.test.study.primaryMapper", sqlSessionFactoryRef = "primarySqlSessionFactory")
 public class PrimaryMybatisConfig {
 
-	@Bean("mainSqlSessionTemplate")
+	@Bean("primarySqlSessionTemplate")
 	@Primary
 	public SqlSessionTemplate mainSqlSessionTemplate(
-			@Qualifier("mainSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+			@Qualifier("primarySqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
 
-	@Bean("mainSqlSessionFactory")
+	@Bean("primarySqlSessionFactory")
 	@Primary
-	public SqlSessionFactory sqlSessionFactory(@Qualifier("primaryDataSource") DataSource dataSource, @Qualifier("mainPaginationInterceptor") MybatisPlusInterceptor paginationInnerInterceptor) throws Exception {
+	public SqlSessionFactory sqlSessionFactory(@Qualifier("primaryDataSource") DataSource dataSource, @Qualifier("primaryPaginationInterceptor") MybatisPlusInterceptor paginationInnerInterceptor) throws Exception {
 		MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
 		sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:com/test/study/primaryMapper/*.xml"));
@@ -38,7 +39,7 @@ public class PrimaryMybatisConfig {
 		return sqlSessionFactoryBean.getObject();
 	}
 
-	@Bean("mainPaginationInterceptor")
+	@Bean("primaryPaginationInterceptor")
 	public MybatisPlusInterceptor mybatisPlusInterceptor() {
 		return new MybatisPlusInterceptor();
 	}
