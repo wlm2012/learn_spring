@@ -1,17 +1,19 @@
 package com.test.study.controller;
 
 
+import com.google.common.collect.Lists;
 import com.test.study.entity.TPersInfo;
+import com.test.study.primaryMapper.PersMapper;
 import com.test.study.primaryMapper.TPersInfoRepository;
 import com.test.study.secondMapper.SecondPersInfoRepository;
+import com.test.study.secondMapper.SecondPersMapper;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,6 +23,21 @@ public class TPersInfoController {
 	private TPersInfoRepository persInfoRepository;
 
 	private SecondPersInfoRepository secondPersInfoRepository;
+
+	private PersMapper persMapper;
+
+	private SecondPersMapper secondPersMapper;
+
+
+	@Autowired
+	public void setSecondPersMapper(SecondPersMapper secondPersMapper) {
+		this.secondPersMapper = secondPersMapper;
+	}
+
+	@Autowired
+	public void setPersMapper(PersMapper persMapper) {
+		this.persMapper = persMapper;
+	}
 
 	@Autowired
 	public void setSecondPersInfoRepository(SecondPersInfoRepository repository) {
@@ -84,6 +101,17 @@ public class TPersInfoController {
 		}
 
 		secondPersInfoRepository.save(tPersInfo);
+	}
+
+	@RequestMapping("/persMapper")
+	public List<TPersInfo> persMapper(@RequestParam String grzh) {
+		TPersInfo tPersInfo = persMapper.selectById(grzh);
+
+		TPersInfo tPersInfo1 = secondPersMapper.selectById(grzh);
+
+		List<TPersInfo> list = Lists.newArrayList(tPersInfo, tPersInfo1);
+
+		return list;
 	}
 
 }

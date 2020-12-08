@@ -1,6 +1,8 @@
 package com.test.study.entity;
 
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +18,11 @@ import java.sql.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_pers_info")
+@TableName("t_pers_info")
 public class TPersInfo {
 
 	@Id
+	@TableId
 	private String grzh;
 	private String xingming;
 	private String xmqp;
