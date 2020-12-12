@@ -23,7 +23,7 @@ import java.util.Map;
 @EnableTransactionManagement
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "primaryEntityManagerFactory",
-		transactionManagerRef = "primaryTransactionManager",
+		transactionManagerRef = "primaryPlatformTransactionManager",
 		basePackages = {"com.test.study.primaryMapper"}
 )
 public class PrimaryJPAConfig {
@@ -66,17 +66,17 @@ public class PrimaryJPAConfig {
 		Map<String, String> jpaProperties = new HashMap<>(16);
 		jpaProperties.put("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
 		jpaProperties.put("hibernate.format_sql", env.getProperty("spring.jpa.hibernate.format_sql"));
-		jpaProperties.put("hibernate.hbm2ddl.auto",env.getProperty("spring.jpa.hibernate.ddl-auto"));
+		jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
 //		jpaProperties.put("hibernate.dialect", env.getProperty("spring.jpa.hibernate.primary-dialect"));
 		jpaProperties.put("hibernate.current_session_context_class", "org.springframework.orm.hibernate5.SpringSessionContext");
 		return jpaProperties;
 	}
 
-	@Primary
+/*	@Primary
 	@Bean(name = "primaryTransactionManager")
 	public PlatformTransactionManager primaryTransactionManager(EntityManagerFactoryBuilder builder) {
 		return new JpaTransactionManager(primaryEntityManagerFactory(builder).getObject());
-	}
+	}*/
 }
 
 

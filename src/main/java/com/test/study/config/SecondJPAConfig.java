@@ -24,7 +24,7 @@ import java.util.Objects;
 @EnableTransactionManagement
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "secondEntityManagerFactory",
-		transactionManagerRef = "secondTransactionManager",
+		transactionManagerRef = "secondPlatformTransactionManager",
 		basePackages = {"com.test.study.secondMapper"}
 )
 public class SecondJPAConfig {
@@ -64,20 +64,20 @@ public class SecondJPAConfig {
 
 
 	private Map<String, String> getVendorProperties() {
-		Map<String, String> jpaProperties = new HashMap<>(16);
+		Map<String, String> jpaProperties = new HashMap<>(5);
 		jpaProperties.put("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
 		jpaProperties.put("hibernate.format_sql", env.getProperty("spring.jpa.hibernate.format_sql"));
-		jpaProperties.put("hibernate.hbm2ddl.auto",env.getProperty("spring.jpa.hibernate.ddl-auto"));
+		jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
 //		jpaProperties.put("hibernate.dialect", env.getProperty("spring.jpa.hibernate.primary-dialect"));
 		jpaProperties.put("hibernate.current_session_context_class", "org.springframework.orm.hibernate5.SpringSessionContext");
 		return jpaProperties;
 	}
 
 
-	@Bean(name = "secondTransactionManager")
+/*	@Bean(name = "secondTransactionManager")
 	public PlatformTransactionManager secondTransactionManager(EntityManagerFactoryBuilder builder) {
 		return new JpaTransactionManager(Objects.requireNonNull(secondEntityManagerFactory(builder).getObject()));
-	}
+	}*/
 }
 
 
