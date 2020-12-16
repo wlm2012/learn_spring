@@ -115,6 +115,7 @@ spring:
       jdbc-url: jdbc:mysql://localhost:3306/study?serverTimezone=Etc/GMT-8
       username: root
       password: 123456
+      ddl-auto: none
     second:
       jdbc-url: jdbc:db2://172.17.17.16:50000/proddb
       username: qdgjj

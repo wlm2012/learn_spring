@@ -1,6 +1,7 @@
 package com.test.study.config;
 
 
+import com.test.study.util.StringUtil.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -67,6 +68,10 @@ public class PrimaryJPAConfig {
 		jpaProperties.put("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
 		jpaProperties.put("hibernate.format_sql", env.getProperty("spring.jpa.hibernate.format_sql"));
 		jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
+		String ddl_auto = env.getProperty("spring.datasource.primary.ddl-auto");
+		if (!StringUtil.isEmpty(ddl_auto)) {
+			jpaProperties.put("hibernate.hbm2ddl.auto", ddl_auto);
+		}
 //		jpaProperties.put("hibernate.dialect", env.getProperty("spring.jpa.hibernate.primary-dialect"));
 		jpaProperties.put("hibernate.current_session_context_class", "org.springframework.orm.hibernate5.SpringSessionContext");
 		return jpaProperties;
