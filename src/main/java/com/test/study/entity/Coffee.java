@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "t_menu")
 @Builder
