@@ -1,12 +1,15 @@
 package com.test.study;
 
 import com.sleepycat.je.rep.elections.ElectionAgentThread;
+import com.test.study.entity.Coffee;
 import com.test.study.primaryMapper.CoffeeRepository;
 import com.test.study.util.test.CoffeExecutor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +26,7 @@ public class CoffeeTest {
 	}
 
 	@Test
-	public void coffeeTest() throws InterruptedException {
+	public void coffeeConcurrentTest() throws InterruptedException {
 
 		LinkedBlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>(20);
 		ThreadPoolExecutor executor = new ThreadPoolExecutor(10, 30, 20, TimeUnit.SECONDS, workQueue);
@@ -37,5 +40,16 @@ public class CoffeeTest {
 			}
 
 		}
+	}
+
+
+	@Test
+	@Transactional
+	public void coffeeTest() {
+		double random = Math.random();
+		BigDecimal bigDecimal = BigDecimal.valueOf(3.12);
+		Coffee coffee = Coffee.builder().price(bigDecimal).build();
+		repository.save(coffee);
+
 	}
 }

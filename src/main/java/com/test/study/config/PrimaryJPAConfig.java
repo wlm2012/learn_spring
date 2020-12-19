@@ -19,6 +19,7 @@ import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Configuration
 @EnableTransactionManagement
@@ -48,7 +49,7 @@ public class PrimaryJPAConfig {
 	@Primary
 	@Bean(name = "primaryEntityManager")
 	public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-		return primaryEntityManagerFactory(builder).getObject().createEntityManager();
+		return Objects.requireNonNull(primaryEntityManagerFactory(builder).getObject()).createEntityManager();
 	}
 
 	@Primary
