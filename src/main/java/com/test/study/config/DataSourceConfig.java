@@ -28,12 +28,12 @@ public class DataSourceConfig {
 	}
 
 
-	@Bean
+/*	@Bean
 	@Resource
 	@Primary
 	public PlatformTransactionManager primaryPlatformTransactionManager() {
 		return new DataSourceTransactionManager(primaryDataSource());
-	}
+	}*/
 
 
 	@Bean
@@ -50,11 +50,11 @@ public class DataSourceConfig {
 		return DataSourceBuilder.create().type(HikariDataSource.class).build();
 	}
 
-	@Bean
+/*	@Bean
 	@Resource
 	public PlatformTransactionManager secondPlatformTransactionManager() {
 		return new DataSourceTransactionManager(secondDataSource());
-	}
+	}*/
 
 	@Bean
 	@Resource

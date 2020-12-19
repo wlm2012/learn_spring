@@ -55,17 +55,18 @@ public class CoffeeTest {
 	@Test
 	@Transactional
 	public void coffeeTest() {
-/*		double random = Math.random();
+		double random = Math.random();
 		BigDecimal bigDecimal = BigDecimal.valueOf(3.12);
 		Coffee coffee = Coffee.builder().price(bigDecimal).build();
-		repository.save(coffee);*/
+		System.out.println(coffee);
+		repository.save(coffee);
+		System.out.println(coffee);
 
-
-		TPersInfo tPersInfo = new TPersInfo();
+/*		TPersInfo tPersInfo = new TPersInfo();
 		tPersInfo.setGrzh("120");
 		tPersInfo.setXingming("wlm");
 
-		tPersInfoRepository.save(tPersInfo);
+		tPersInfoRepository.save(tPersInfo);*/
 
 	}
 }

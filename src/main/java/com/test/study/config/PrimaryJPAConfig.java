@@ -81,7 +81,7 @@ public class PrimaryJPAConfig {
 	@Primary
 	@Bean(name = "primaryTransactionManager")
 	public PlatformTransactionManager primaryTransactionManager(EntityManagerFactoryBuilder builder) {
-		return new JpaTransactionManager(primaryEntityManagerFactory(builder).getObject());
+		return new JpaTransactionManager(Objects.requireNonNull(primaryEntityManagerFactory(builder).getObject()));
 	}
 }
 
