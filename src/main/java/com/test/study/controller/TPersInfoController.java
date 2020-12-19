@@ -2,7 +2,9 @@ package com.test.study.controller;
 
 
 import com.google.common.collect.Lists;
+import com.test.study.entity.Coffee;
 import com.test.study.entity.TPersInfo;
+import com.test.study.primaryMapper.CoffeeRepository;
 import com.test.study.primaryMapper.PersMapper;
 import com.test.study.primaryMapper.TPersInfoRepository;
 import com.test.study.secondMapper.SecondPersInfoRepository;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +30,13 @@ public class TPersInfoController {
 	private PersMapper persMapper;
 
 	private SecondPersMapper secondPersMapper;
+
+	private CoffeeRepository coffeeRepository;
+
+	@Autowired
+	public void setCoffeeRepository(CoffeeRepository coffeeRepository) {
+		this.coffeeRepository = coffeeRepository;
+	}
 
 
 	@Autowired
@@ -89,6 +99,8 @@ public class TPersInfoController {
 
 		persInfoRepository.save(tPersInfo);
 	}
+
+
 
 	@RequestMapping("/SavePers1/{grzh}/{xingbie}")
 	@Transactional("secondTransactionManager")

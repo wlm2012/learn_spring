@@ -25,7 +25,7 @@ import java.util.Objects;
 @EnableTransactionManagement
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "primaryEntityManagerFactory",
-		transactionManagerRef = "primaryPlatformTransactionManager",
+		transactionManagerRef = "primaryTransactionManager",
 		basePackages = {"com.test.study.primaryMapper"}
 )
 public class PrimaryJPAConfig {
@@ -78,11 +78,11 @@ public class PrimaryJPAConfig {
 		return jpaProperties;
 	}
 
-/*	@Primary
+	@Primary
 	@Bean(name = "primaryTransactionManager")
 	public PlatformTransactionManager primaryTransactionManager(EntityManagerFactoryBuilder builder) {
 		return new JpaTransactionManager(primaryEntityManagerFactory(builder).getObject());
-	}*/
+	}
 }
 
 

@@ -2,13 +2,15 @@ package com.test.study;
 
 import com.sleepycat.je.rep.elections.ElectionAgentThread;
 import com.test.study.entity.Coffee;
+import com.test.study.entity.TPersInfo;
 import com.test.study.primaryMapper.CoffeeRepository;
+import com.test.study.primaryMapper.TPersInfoRepository;
 import com.test.study.util.test.CoffeExecutor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -19,6 +21,13 @@ import java.util.concurrent.TimeUnit;
 public class CoffeeTest {
 
 	private CoffeeRepository repository;
+
+	private TPersInfoRepository tPersInfoRepository;
+
+	@Autowired
+	public void settPersInfoRepository(TPersInfoRepository repository) {
+		this.tPersInfoRepository = repository;
+	}
 
 	@Autowired
 	public void setRepository(CoffeeRepository repository) {
@@ -46,10 +55,17 @@ public class CoffeeTest {
 	@Test
 	@Transactional
 	public void coffeeTest() {
-		double random = Math.random();
+/*		double random = Math.random();
 		BigDecimal bigDecimal = BigDecimal.valueOf(3.12);
 		Coffee coffee = Coffee.builder().price(bigDecimal).build();
-		repository.save(coffee);
+		repository.save(coffee);*/
+
+
+		TPersInfo tPersInfo = new TPersInfo();
+		tPersInfo.setGrzh("120");
+		tPersInfo.setXingming("wlm");
+
+		tPersInfoRepository.save(tPersInfo);
 
 	}
 }

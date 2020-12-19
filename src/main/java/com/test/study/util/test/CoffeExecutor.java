@@ -23,7 +23,10 @@ public class CoffeExecutor implements Runnable {
 			double random = Math.random();
 			BigDecimal bigDecimal = BigDecimal.valueOf(random);
 			Coffee coffee = Coffee.builder().price(bigDecimal).build();
-			repository.save(coffee);
+			coffee = repository.save(coffee);
+			System.out.println(coffee.toString());
+
 		}
+//		repository.flush();
 	}
 }

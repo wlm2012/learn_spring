@@ -24,7 +24,7 @@ import java.util.Objects;
 @EnableTransactionManagement
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "secondEntityManagerFactory",
-		transactionManagerRef = "secondPlatformTransactionManager",
+		transactionManagerRef = "secondTransactionManager",
 		basePackages = {"com.test.study.secondMapper"}
 )
 public class SecondJPAConfig {
@@ -74,10 +74,10 @@ public class SecondJPAConfig {
 	}
 
 
-/*	@Bean(name = "secondTransactionManager")
+	@Bean(name = "secondTransactionManager")
 	public PlatformTransactionManager secondTransactionManager(EntityManagerFactoryBuilder builder) {
 		return new JpaTransactionManager(Objects.requireNonNull(secondEntityManagerFactory(builder).getObject()));
-	}*/
+	}
 }
 
 
