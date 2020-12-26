@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class ReflectTest {
 
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException, NoSuchFieldException {
-		Class c1 = Class.forName("wlm.entity.Person");
+		Class c1 = Class.forName("com.test.study.util.entity.Person");
 
 		int[] a = {1, 2, 3};
 		int length = 4;
@@ -41,7 +41,7 @@ public class ReflectTest {
 	}
 
 	public static void testConstructor() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-		Class c1 = Class.forName("wlm.entity.Person");
+		Class c1 = Class.forName("com.test.study.util.entity.Person");
 //      Person person=(Person) c1.getConstructor().newInstance();
 		Person person = (Person) c1.getConstructor(String.class, int.class).newInstance("wlm", 11);
 		String name = person.getName();
@@ -53,7 +53,7 @@ public class ReflectTest {
 
 	
 	public static void testMethod() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-		Class c1 = Class.forName("wlm.entity.Person");
+		Class c1 = Class.forName("com.test.study.util.entity.Person");
 		Object person = c1.getConstructor().newInstance();
 
 		Method printYear = c1.getMethod("printYear", String.class);
@@ -65,7 +65,7 @@ public class ReflectTest {
 	}
 
 	public static void ResourceTest() throws ClassNotFoundException, IOException {
-		Class c1 = Class.forName("wlm.entity.Person");
+		Class c1 = Class.forName("com.test.study.util.entity.Person");
 		//create 1.txt under Person.class fold for test
 		System.out.println(c1.getResource("1.txt"));
 		InputStream inputStream = c1.getResourceAsStream("1.txt");
@@ -91,7 +91,7 @@ public class ReflectTest {
 	}
 
 	public static void setAndGetField() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException {
-		Class c1 = Class.forName("wlm.entity.Person");
+		Class c1 = Class.forName("com.test.study.util.entity.Person");
 		var harry = (Person) c1.getConstructor(String.class, int.class, String.class).newInstance("Harry", 14, "1");
 
 		//change the value of "sex", 1->2
