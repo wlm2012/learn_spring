@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@SpringBootApplication
+//@SpringBootApplication
 @Slf4j
 public class ContextHierarchyDemoApplication implements ApplicationRunner {
 
