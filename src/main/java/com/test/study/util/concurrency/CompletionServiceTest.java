@@ -16,13 +16,13 @@ public class CompletionServiceTest {
 
 
 		CallableTest testCallable = new CallableTest();
-		testCallable.setTime(0);
+		testCallable.setTime(5);
 		service.submit(testCallable);
 		CallableTest testCallable1 = new CallableTest();
 		testCallable1.setTime(3);
 		service.submit(testCallable1);
 		CallableTest testCallable2 = new CallableTest();
-		testCallable2.setTime(5);
+		testCallable2.setTime(0);
 		service.submit(testCallable2);
 
 		for (int i = 0; i < 3; i++) {
@@ -30,7 +30,7 @@ public class CompletionServiceTest {
 				Future<String> future = service.take();
 				System.out.println(future.get());
 			} catch (Exception e) {
-				System.out.println(e.getMessage());
+				System.out.println("e.getMessage()=="+e.getMessage());
 			}
 
 		}
