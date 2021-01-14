@@ -25,7 +25,7 @@ public class CompletionServiceTest {
 		testCallable2.setTime(0);
 		service.submit(testCallable2);
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
 			try {
 				Future<String> future = service.take();
 				System.out.println(future.get());
