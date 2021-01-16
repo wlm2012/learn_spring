@@ -25,12 +25,14 @@ public class CompletionServiceTest {
 		testCallable2.setTime(0);
 		service.submit(testCallable2);
 
+
+		// if the num bigger than tasks ,it will block
 		for (int i = 0; i < 4; i++) {
 			try {
 				Future<String> future = service.take();
 				System.out.println(future.get());
 			} catch (Exception e) {
-				System.out.println("e.getMessage()=="+e.getMessage());
+				System.out.println("e.getMessage()==" + e.getMessage());
 			}
 
 		}
