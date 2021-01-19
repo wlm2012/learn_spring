@@ -36,7 +36,7 @@ public class CoffeeMapperController {
 		this.coffeeMapper = coffeeMapper;
 	}
 
-	@PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
 	public CoffeePlus addCoffee(@Valid CoffeePlus coffeePlus, BindingResult result) {
