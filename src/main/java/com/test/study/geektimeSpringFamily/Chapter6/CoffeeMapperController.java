@@ -43,6 +43,7 @@ public class CoffeeMapperController {
 		if (result.hasErrors()) {
 			log.warn("erroes :{}", result);
 //			int a=0/0;
+
 		}
 
 		coffeePlus.setCreateTime(LocalDateTime.now());
