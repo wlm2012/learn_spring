@@ -43,7 +43,7 @@ public class CoffeeMapperController {
 		if (result.hasErrors()) {
 			log.warn("erroes :{}", result);
 //			int a=0/0;
-
+			throw new FormValidationException(result);
 		}
 
 		coffeePlus.setCreateTime(LocalDateTime.now());
