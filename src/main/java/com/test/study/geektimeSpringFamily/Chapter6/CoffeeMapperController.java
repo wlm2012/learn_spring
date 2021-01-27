@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/coffee")
@@ -78,6 +81,26 @@ public class CoffeeMapperController {
 			}
 		}
 		return list;
+	}
+
+
+	@PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public CoffeePlus addJsonCoffee(@Valid CoffeePlus coffeePlus, BindingResult result) {
+		if (result.hasErrors()) {
+			log.warn("erroes : {}", result);
+			throw new ValidationException(result.toString());
+		}
+		coffeeMapper.insert(coffeePlus);
+		return coffeePlus;
+	}
+
+	@ExceptionHandler(ValidationException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public Map<String, String> validationExceptionHandler(ValidationException exception) {
+		Map<String, String> map = new HashMap<>();
+		map.put("message", "????");
+		return map;
 	}
 
 
