@@ -19,13 +19,13 @@ import javax.sql.DataSource;
 public class DataSourceConfig {
 
 
-	@ConfigurationProperties("spring.datasource.primary")
-	@Bean
-	@Primary
-	public DataSource primaryDataSource() {
-		DataSource dataSource = DataSourceBuilder.create().type(HikariDataSource.class).build();
-		return dataSource;
-	}
+    @ConfigurationProperties("spring.datasource.primary")
+    @Bean
+    @Primary
+    public DataSource primaryDataSource() {
+        DataSource dataSource = DataSourceBuilder.create().type(HikariDataSource.class).build();
+        return dataSource;
+    }
 
 
 /*	@Bean
@@ -36,19 +36,19 @@ public class DataSourceConfig {
 	}*/
 
 
-	@Bean
-	@Primary
-	@Resource
-	public JdbcTemplate primaryJdbcTemplate() {
-		return new JdbcTemplate(primaryDataSource());
-	}
+    @Bean
+    @Primary
+    @Resource
+    public JdbcTemplate primaryJdbcTemplate() {
+        return new JdbcTemplate(primaryDataSource());
+    }
 
 
-	@ConfigurationProperties("spring.datasource.second")
-	@Bean
-	public DataSource secondDataSource() {
-		return DataSourceBuilder.create().type(HikariDataSource.class).build();
-	}
+    @ConfigurationProperties("spring.datasource.second")
+    @Bean
+    public DataSource secondDataSource() {
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
+    }
 
 /*	@Bean
 	@Resource
@@ -56,10 +56,10 @@ public class DataSourceConfig {
 		return new DataSourceTransactionManager(secondDataSource());
 	}*/
 
-	@Bean
-	@Resource
-	public JdbcTemplate secondJdbcTemplate() {
-		return new JdbcTemplate(secondDataSource());
-	}
+    @Bean
+    @Resource
+    public JdbcTemplate secondJdbcTemplate() {
+        return new JdbcTemplate(secondDataSource());
+    }
 
 }

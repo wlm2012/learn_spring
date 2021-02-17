@@ -7,12 +7,12 @@ import org.springframework.beans.factory.FactoryBean;
 /**
  * @author wlm
  */
-public class UserFactory implements FactoryBean<User>{
+public class UserFactory implements FactoryBean<User> {
 
     @Override
     public User getObject() throws Exception {
 
-        return new User(33L,"linux",55,"??");
+        return new User(33L, "linux", 55, "??");
     }
 
     @Override
@@ -21,8 +21,8 @@ public class UserFactory implements FactoryBean<User>{
     }
 
     @Override
-    public boolean isSingleton(){
+    public boolean isSingleton() {
         return false;
     }
-    
+
 }
