@@ -1,4 +1,4 @@
-package com.test.study.util.leecode;
+package com.test.study.leecode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
