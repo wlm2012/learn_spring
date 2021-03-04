@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: test
+    active: test1
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    druid:
@@ -129,6 +129,27 @@ spring:
 
 
 
+---
+#数据库设置
+spring:
+  config:
+    activate:
+      on-profile: test1
+  datasource:
+    primary:
+      jdbc-url: jdbc:mysql://localhost:3306/study?serverTimezone=Etc/GMT-8
+      username: root
+      password: 14141215
+      ddl-auto: update
+    second:
+      jdbc-url: jdbc:mysql://localhost:3306/study?serverTimezone=Etc/GMT-8
+      username: root
+      password: 14141215
+  jpa:
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: none
 
 
 ---

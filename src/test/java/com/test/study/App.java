@@ -165,4 +165,9 @@ public class App {
     public void arraysTest() {
         ArraysTest.AsList();
     }
+
+    @Test
+    public void sortTest(){
+        StreamTest.sortTest();
+    }
 }

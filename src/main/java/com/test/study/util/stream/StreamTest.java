@@ -198,4 +198,13 @@ public class StreamTest {
 		iStream.filter(n -> n.compareTo(BigInteger.valueOf(100)) < 0).forEach(System.out::print);
 	}
 
+	public static void sortTest(){
+		String[] s = {"ww3", "1qq", "ee"};
+		List<String> words = new ArrayList<>();
+		words = Arrays.asList(s);
+		words.forEach(System.out::println);
+		words.sort(String::compareTo);
+		words.forEach(System.out::println);
+	}
+
 }
